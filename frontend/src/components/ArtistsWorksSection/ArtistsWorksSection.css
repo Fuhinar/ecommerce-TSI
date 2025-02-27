@@ -1,0 +1,66 @@
+h2 {
+    padding-left: 19vh;
+    padding-bottom: 10px;
+}
+
+.grid-container {
+    display: grid; /* Используем сетку */
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    gap: 40px 50px; /* Промежутки между элементами */
+    margin: 40px auto; /* Центрирование сетки */
+    padding: 0 19vh; /* Горизонтальные отступы */
+}
+
+.grid-item {
+    background-color: #f9f9f9;
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    padding: 20px; /* Внутренние отступы */
+    text-align: center; /* Центрирование текста */
+    transition: transform 0.3s ease-in-out; /* Анимация при наведении */
+}
+
+.grid-item:hover {
+    transform: scale(1.05); /* Увеличение при наведении */
+}
+
+.grid-item img {
+    width: 100%; /* Адаптивная ширина */
+    height: auto; /* Сохраняем пропорции */
+    border-radius: 5px; /* Скругленные углы изображения */
+    margin-bottom: 15px; /* Отступ под изображением */
+}
+
+.info {
+    padding-top: 10px;
+    background-color: #f9f9f9; /* Белый фон карточки */
+}
+
+.info p {
+    margin: 5px 0; /* Отступы между текстовыми строками */
+    font-size: 14px; /* Размер шрифта */
+    color: #333; /* Цвет текста */
+    background-color: #f9f9f9; /* Белый фон карточки */
+}
+.info p strong {
+    background-color: #f9f9f9; /* Белый фон карточки */
+    font-weight: lighter;
+    font-size: medium;
+}
+
+.view-all-button {
+    margin: 50px auto; /* Центрирование кнопки */
+    display: block;
+    padding: 12px 24px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.view-all-button:hover {
+    background-color: #333;
+}

@@ -1,0 +1,107 @@
+.art-personal-page {
+  font-family: 'Arial', sans-serif;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+  color: #333;
+}
+
+.art-header-container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 10vh;
+}
+
+.art-image-large {
+  width: 540px;
+  height: 560px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.artist-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Расстояние между элементами */
+  text-align: center;
+}
+.artist-name p {
+  color: #7C7C7C; /* Цвет текста */
+  text-decoration: underline; /* Нижнее подчеркивание */
+  font-weight: normal; /* Убираем жирное выделение */
+  margin: 0; /* Убираем отступы */
+}
+
+
+.artist-photo {
+  width: 326px;
+  height: 352px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.art-price p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  font-weight: lighter;
+  color: #000;
+}
+
+.art-options {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  width: 100%; /* Растянуть на ширину контейнера */
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column; /* Размещаем элементы в столбик */
+  gap: 20px; /* Добавляем расстояние между элементами */
+  margin-bottom: 20px;
+}
+
+
+.size-selector, .quantity-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+.quantity-selector input {
+  width: 70px; /* Уменьшение ширины */
+  text-align: center; /* Центрируем текст */
+  padding: 5px; /* Уменьшаем внутренние отступы */
+  font-size: 0.9rem; /* Уменьшаем размер текста */
+  border-radius: 3px; /* Немного скругляем углы */
+  
+}
+
+.add-to-cart {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1rem;
+  margin-right: 23vh;
+  width: 100%;
+}
+
+.add-to-cart:hover {
+  background-color: #333;
+}
+
+.size-selector select, .quantity-selector input {
+  background-color: #000; /* Черный фон */
+  color: #fff; /* Белый текст */
+  padding: 10px 20px; /* Внутренний отступ */
+  border: none; /* Убираем границу */
+  border-radius: 5px; /* Скругленные углы */
+  font-size: 1rem; /* Размер текста */
+  cursor: pointer; /* Курсор указателя */
+}

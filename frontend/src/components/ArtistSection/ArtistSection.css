@@ -1,0 +1,82 @@
+.artists-section {
+    text-align: center;
+    padding: 40px 19vh; /* Align section title horizontally */
+	display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: left; /* Align text to the left */
+    margin-left: 32vh;
+    
+}
+.artist-grid {
+    display: flex;
+    justify-content: center;
+    gap: 12vh; /* Adjust spacing between blocks */
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+	width: 100%;
+    align-items: center;
+    
+    
+}
+
+.artist-card {
+    width: 220px; /* Consistent width */
+    height: 250px; /* Set height for uniformity */
+    position: relative; /* Allows for better name positioning */
+    display: flex;
+    flex-direction: column; /* Элементы внутри карточки располагаются вертикально */
+    align-items: center; /* Центрируем элементы внутри карточки */
+    cursor: pointer; /* Указываем, что карточка кликабельна */
+    border: 1px solid #ddd; /* Граница для проверки */
+    
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden; /* Ensure image fits within the container */
+}
+
+.artist-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.artist-name {
+    font-size: 17px;
+    color: #555;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.arrow {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.view-all-button {
+    margin: 50px auto;
+    display: block;
+    padding: 12px 24px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+	
+}
+
+.view-all-button:hover {
+    background-color: #003366;
+}

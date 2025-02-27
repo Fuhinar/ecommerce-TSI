@@ -1,0 +1,44 @@
+.terms-of-use-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .terms-of-use-header {
+    text-align: justify;
+    margin-bottom: 30px;
+    
+  }
+  
+  .terms-of-use-header h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 10vh;
+  }
+  
+  .terms-of-use-header p {
+    font-size: 18px;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .terms-of-use-content {
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+  
+  .terms-of-use-content h2 {
+    font-size: 19px;
+    margin-top: 20px;
+    margin-left: 37vh;
+  }
+  
+  .terms-of-use-content p {
+    font-size: 19px;
+    color: #555;
+    margin-top: 10px;
+    text-align: justify;
+}

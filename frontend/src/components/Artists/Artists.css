@@ -1,0 +1,61 @@
+.artists-section {
+    text-align: center;
+    padding: 40px 19vh; /* Align section title horizontally */
+	display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.artists-section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: left; /* Align text to the left */
+    margin-left: -13vh;
+    
+}
+.artists-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10vh; /* Adjust spacing between blocks */
+    margin-bottom: 30px;
+    padding-right: 20vh;
+    width: 100%;
+}
+
+
+.artists-card {
+    width: 230px; /* Consistent width */
+    height: 250px; /* Set height for uniformity */
+    position: relative; /* Allows for better name positioning */
+}
+
+.artists-image-container {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc; /* Placeholder color */
+    border-radius: 8px;
+    overflow: hidden; /* Ensure image fits within the container */
+}
+
+.artists-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.artists-name {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 8px;
+    text-align: center;
+    
+}
+
+.arrow {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+

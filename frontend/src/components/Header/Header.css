@@ -1,0 +1,81 @@
+.topbar {
+	background-color: #001f3f; 
+    height: 7vh; 
+    width: 100%; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 10; 
+  }
+  
+.header {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	
+    width: 100%;
+    padding: 0 5%; /* Adjust padding to align content as in the screenshot */
+    margin-top: 4vh;
+    box-sizing: border-box;
+ }
+  
+  
+.logo {
+    height: 102px;
+    width: auto;
+	margin: 25px 20px;
+ }
+ .nav {
+	display: flex;
+    justify-content: center; /* Центрирует элементы по горизонтали */
+    gap: 30px; /* Добавляет расстояние между ссылками */
+    margin-top: 10px;
+	margin-right: 15vh;
+ }
+  
+  
+.nav-link {
+    color: #333333; /* Цвет текста */
+    
+    text-decoration: none; /* Убираем подчеркивание */
+    font-size: 1rem; /* Размер текста */
+    padding: 5px 10px; /* Внутренние отступы для удобства клика */
+    transition: transform 0.3s ease, color 0.3s ease, text-decoration 0.3s ease; /* Плавный эффект */
+}
+
+
+.nav-link:hover {
+    color: #001f3f; /* Цвет текста при наведении */
+    transform: scale(1.1); /* Увеличиваем размер на 10% */
+    text-decoration: underline; /* Добавляем подчеркивание */
+}
+
+.buttons {
+	display: flex;
+    align-items: center;
+    gap: 15px; /* Adjust the gap value to control space between icons */
+    margin-top: 30px;
+}
+  
+ .shop-cart-button, .search-button {
+    font-size: 1.2rem; /* Increase size */
+    color: #001f3f;
+    transition: color 0.3s ease;
+}
+  
+.shop-cart-button.active {
+    color: #ff6347; /* Change color when active */
+}
+  
+.shop-cart-button, .search-button {
+    margin-left: 20px;
+}
+  
+.divider {
+    border-top: 1px solid #ccc;
+    width: 100%;
+    margin: auto;
+    
+}
+  
+  

@@ -1,0 +1,22 @@
+.text-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.text-section .title {
+    font-size: 2rem;
+    color: #001f3f;
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+
+.text-section .subtitle {
+    font-size: 1.2rem;
+    color: #000000;
+    font-weight: 400;
+	padding: 15px;
+}
+
