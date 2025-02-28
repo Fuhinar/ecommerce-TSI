@@ -1,0 +1,25 @@
+# app/urls.py
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework import routers
+
+from artists.views import ArtistViewSet
+from events.views import EventViewSet
+from orders.views import OrderViewSet
+from products.views import ProductViewSet
+from users.views import UserViewSet  # Если есть ViewSet для пользователей
+
+from django.views.generic import TemplateView
+
+router = routers.DefaultRouter()
+router.register(r'artists', ArtistViewSet)
+router.register(r'events', EventViewSet)
+router.register(r'orders', OrderViewSet)
+router.register(r'products', ProductViewSet)
+router.register(r'users', UserViewSet)  # или другое имя, если нужно
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('', TemplateView.as_view(template_name='index.html'), name='home'),
+]
