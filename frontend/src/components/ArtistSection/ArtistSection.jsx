@@ -9,11 +9,11 @@ export default function ArtistSection({ artists = [] }) {
     <div className="artist-section">
       <h2 className="section-title">Some of our artists:</h2>
       <div className="artist-grid">
-        {artists.map((artist) => (
+        {artists.slice(0, 3).map((artist) => (
           <div
             key={artist.id}
             className="artist-card"
-            onClick={() => history(`/artist/${artist.id}`)} // Перенаправление на страницу художника
+            onClick={() => history(`/artistpersonalpage/${artist.id}`)} // Перенаправление на страницу художника
           >
             <div className="image-container">
               <img src={artist.photo} alt={artist.name} className="artist-photo" />

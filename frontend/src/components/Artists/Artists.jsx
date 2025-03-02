@@ -1,9 +1,9 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Artists.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./Artists.css";
 
 export default function Artists({ ArtistsPage = [] }) {
-  const history = useNavigate(); // Для навигации
+  const navigate = useNavigate(); // Хук для навигации
 
   return (
     <div className="artists-section">
@@ -13,7 +13,7 @@ export default function Artists({ ArtistsPage = [] }) {
           <div
             key={artist.id}
             className="artists-card"
-            onClick={() => history(`/artistpersonalpage/${artist.id}`)} // Перенаправление на страницу художника
+            onClick={() => navigate(`/artistpersonalpage/${artist.id}`)}
             style={{ cursor: 'pointer' }}
           >
             <div className="artists-image-container">

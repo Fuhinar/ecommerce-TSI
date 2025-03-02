@@ -27,35 +27,34 @@
 }
 
 .artist-card {
-    width: 220px; /* Consistent width */
-    height: 250px; /* Set height for uniformity */
-    position: relative; /* Allows for better name positioning */
+    width: 220px;
+    height: 250px; /* фиксируем высоту */
+    border: 1px solid #ddd;
     display: flex;
-    flex-direction: column; /* Элементы внутри карточки располагаются вертикально */
-    align-items: center; /* Центрируем элементы внутри карточки */
-    cursor: pointer; /* Указываем, что карточка кликабельна */
-    border: 1px solid #ddd; /* Граница для проверки */
-    
+    flex-direction: column;
+    align-items: start;
+    cursor: pointer;
+    overflow: hidden; /* чтобы обрезать картинку по границам карточки */
 }
 
 .image-container {
     width: 100%;
     height: 100%;
     border-radius: 8px;
-    overflow: hidden; /* Ensure image fits within the container */
+    overflow: hidden;
 }
 
 .artist-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* обрезает изображение по размеру контейнера */
 }
 
 .artist-name {
     font-size: 17px;
     color: #555;
     margin-top: 8px;
-    text-align: center;
+    text-align: start;
 }
 
 .arrow {

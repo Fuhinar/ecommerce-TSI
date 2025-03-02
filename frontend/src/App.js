@@ -20,72 +20,44 @@ import TermsOfUse from "./components/TermsofUse/TermsofUse";
 import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
-  // Создаем состояние для данных, которые будем получать из бэкенда:
+  // Состояния для данных из API
   const [artists, setArtists] = useState([]);
-  const [artistInfo, setArtistInfo] = useState([]);
-  const [artistWorks, setArtistWorks] = useState([]);
-  const [artistsPage, setArtistsPage] = useState([]);
-  const [framedItems, setFramedItems] = useState([]);
-  const [classicItems, setClassicItems] = useState([]);
   const [eventsData, setEventsData] = useState([]);
+  const [products, setProducts] = useState([]);
+  
 
-  // useEffect для загрузки данных при монтировании компонента:
   useEffect(() => {
-    // Пример запроса для получения художников:
+    // Получение данных артистов
     axios.get('/api/artists/')
       .then(response => {
         setArtists(response.data);
-        // Если у тебя отдельный эндпоинт с детальной информацией по художникам:
-        setArtistInfo(response.data); // или другой URL, если они отличаются
       })
       .catch(error => {
-        console.error("Ошибка при загрузке данных художников", error);
+        console.error("Ошибка при загрузке данных артистов", error);
       });
 
-    // Пример запроса для получения работ художников:
-    axios.get('/api/artist-works/')
-      .then(response => {
-        setArtistWorks(response.data);
-      })
-      .catch(error => {
-        console.error("Ошибка при загрузке работ", error);
-      });
-
-    // Пример запроса для получения данных для страницы художников:
-    axios.get('/api/artists-page/')
-      .then(response => {
-        setArtistsPage(response.data);
-      })
-      .catch(error => {
-        console.error("Ошибка при загрузке страницы художников", error);
-      });
-
-    // Пример запроса для получения данных о рамках:
-    axios.get('/api/framed-items/')
-      .then(response => {
-        setFramedItems(response.data);
-      })
-      .catch(error => {
-        console.error("Ошибка при загрузке рамок", error);
-      });
-
-    axios.get('/api/classic-items/')
-      .then(response => {
-        setClassicItems(response.data);
-      })
-      .catch(error => {
-        console.error("Ошибка при загрузке классических рамок", error);
-      });
-
-    // Пример запроса для получения событий:
+    // Получение данных событий
     axios.get('/api/events/')
       .then(response => {
         setEventsData(response.data);
       })
       .catch(error => {
-        console.error("Ошибка при загрузке событий", error);
+        console.error("Ошибка при загрузке данных событий", error);
+      });
+
+    // Получение данных товаров
+    axios.get('/api/products/')
+      .then(response => {
+        setProducts(response.data);
+      })
+      .catch(error => {
+        console.error("Ошибка при загрузке данных товаров", error);
       });
   }, []);
+
+  // Фильтруем товары по категориям, если в product есть поле category
+  const framedItems = products.filter(p => p.category === 'painting');
+  const classicItems = products.filter(p => p.category !== 'painting');
 
   return (
     <Router>
@@ -98,7 +70,7 @@ function App() {
             <>
               <TextSection />
               <ArtistSection artists={artists} />
-              <ArtistsWorksSection artistsWorks={artistWorks} />
+              <ArtistsWorksSection products={products} />
               <FooterLogo />
               <Footer />
             </>
@@ -110,7 +82,7 @@ function App() {
           path="/artist"
           element={
             <>
-              <Artists ArtistsPage={artistsPage} />
+              <Artists ArtistsPage={artists} />
               <ArtistsText />
               <FooterLogo />
               <Footer />
@@ -123,7 +95,7 @@ function App() {
           path="/artistpersonalpage/:artistId"
           element={
             <>
-              <ArtistPersonalPage ArtistInfoPage={artistInfo} works={artistWorks} />
+              <ArtistPersonalPage ArtistInfoPage={artists} works={products} />
               <FooterLogo />
               <Footer />
             </>
@@ -135,13 +107,14 @@ function App() {
           path="/artpersonalpage/:workId"
           element={
             <>
-              <ArtPersonalPage works={artistWorks} artists={artists} />
+              <ArtPersonalPage works={products} artists={artists} />
               <FooterLogo />
               <Footer />
             </>
           }
         />
 
+        {/* Страница с рамками, фильтруем по категориям */}
         <Route
           path="/framed-canvas"
           element={<FramedCanvas items={framedItems} />}
@@ -150,10 +123,12 @@ function App() {
           path="/classic-frames"
           element={<ClassicFrames items={classicItems} />}
         />
+
         <Route
           path="/events"
           element={<Events events={eventsData} />}
         />
+
         <Route
           path="/terms"
           element={

@@ -6,9 +6,4 @@ from .serializers import ArtistSerializer
 class ArtistViewSet(viewsets.ModelViewSet):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
-    permission_classes = [IsAuthenticated]
-
-class PublicArtistViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Artist.objects.all()
-    serializer_class = ArtistSerializer
-    permission_classes = [AllowAny]  # Доступ для всех пользователей
+    permission_classes = [AllowAny]
