@@ -4,26 +4,50 @@ h2 {
 }
 
 .grid-container {
-    display: grid; /* Используем сетку */
-    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
-    gap: 40px 50px; /* Промежутки между элементами */
-    margin: 40px auto; /* Центрирование сетки */
-    padding: 0 19vh; /* Горизонтальные отступы */
-}
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 50px;
+    margin: 40px auto;
+    padding: 0 19vh;
+    
+  }
+  
 
-.grid-item {
+  .grid-item {
+    width: 200px;
+    height: 300px;              /* Фиксированная высота карточки */
     background-color: #f9f9f9;
-    border-radius: 10px; /* Скругленные углы */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
-    padding: 20px; /* Внутренние отступы */
-    text-align: center; /* Центрирование текста */
-    transition: transform 0.3s ease-in-out; /* Анимация при наведении */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    display: flex;             /* Добавим flex, чтобы разместить контент вертикально */
+    flex-direction: column;
+    justify-content: flex-start;  /* Картинка и текст идут сверху */
+    align-items: center;       /* Центрируем по горизонтали */
+    border: 1px solid black;
 }
 
-.grid-item:hover {
-    transform: scale(1.05); /* Увеличение при наведении */
-}
+  .grid-item:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Блок для изображения */
+.image-container {
+    width: 100%;
+    height: 150px;       /* Фиксируем высоту под картинку */
+    overflow: hidden;    /* Чтобы изображение не вылезало за границы */
+    border-radius: 5px 5px 0 0; /* Скруглим верхние углы, если нужно */
+    margin-bottom: 10px;
+  }
 
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Обрезает картинку, сохраняя пропорции */
+    display: block;
+  }
+  
 .grid-item img {
     width: 100%; /* Адаптивная ширина */
     height: auto; /* Сохраняем пропорции */

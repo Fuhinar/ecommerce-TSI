@@ -17,7 +17,6 @@ import './ArtistsWorksSection.css';
               </div>
               <div className="info">
                 <p><strong>{item.title}</strong></p>
-                <p><strong>Topic:</strong> {item.topic}</p>
                 <p><strong>Price:</strong> {item.price}</p>
               </div>
             </div>

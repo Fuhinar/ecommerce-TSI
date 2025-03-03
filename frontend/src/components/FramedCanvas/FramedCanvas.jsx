@@ -1,9 +1,8 @@
 import React from "react";
 import "./FramedCanvas.css";
 
-export default function FramedCanvas({ items = [] }) {
+export default function FramedCanvas({ products = [] }) {
   return (
-    
     <div className="framed-canvas-page">
       <div className="framed-canvas-header">
         <h1>Framed Canvas</h1>
@@ -18,14 +17,14 @@ export default function FramedCanvas({ items = [] }) {
       </div>
 
       <div className="framed-canvas-grid">
-        {items.map((item, index) => (
+        {products.map((item, index) => (
           <div key={index} className="framed-canvas-card">
             <div className="image-container">
-              <img src={item.image} alt={item.name} className="framed-canvas-image" />
+              <img src={item.image} alt={item.title} className="framed-canvas-image" />
             </div>
             <div className="framed-canvas-info">
               <p className="artist-name">Artist name: {item.artist}</p>
-              <p className="topic">Topic: {item.topic}</p>
+              <p className="description">Description: {item.description}</p>
               <p className="price">Price: {item.price}</p>
             </div>
           </div>

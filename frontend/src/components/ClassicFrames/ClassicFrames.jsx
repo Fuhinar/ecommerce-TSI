@@ -1,7 +1,7 @@
 import React from "react";
 import "./ClassicFrames.css";
 
-export default function ClassicFrames({ items = [] }) {
+export default function ClassicFrames({ products = [] }) {
   return (
     <div className="classic-frames-page">
       <div className="classic-frames-header">
@@ -15,7 +15,7 @@ export default function ClassicFrames({ items = [] }) {
       </div>
 
       <div className="classic-frames-grid">
-        {items.map((item, index) => (
+        {products.map((item, index) => (
           <div key={index} className="classic-frames-card">
             <div className="image-container">
               <img src={item.image} alt={item.name} className="classic-frames-image" />

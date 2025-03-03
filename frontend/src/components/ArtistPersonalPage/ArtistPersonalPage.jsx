@@ -8,7 +8,7 @@ export default function ArtistPersonalPage({ ArtistInfoPage, works }) {
 
   // Преобразуем artistId из строки в число
   const artist = ArtistInfoPage?.find((a) => a.id === parseInt(artistId, 10));
-  const artistsWorks = works?.filter((work) => work.artistId === parseInt(artistId, 10));
+  const artistsWorks = works?.filter((work) => work.artist === parseInt(artistId, 10));
 
   if (!artist) {
     return <h2>Artist not found</h2>;

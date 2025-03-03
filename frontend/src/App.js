@@ -117,11 +117,11 @@ function App() {
         {/* Страница с рамками, фильтруем по категориям */}
         <Route
           path="/framed-canvas"
-          element={<FramedCanvas items={framedItems} />}
+          element={<FramedCanvas products={framedItems} />}
         />
         <Route
           path="/classic-frames"
-          element={<ClassicFrames items={classicItems} />}
+          element={<ClassicFrames products={classicItems} />}
         />
 
         <Route
