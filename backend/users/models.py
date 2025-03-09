@@ -18,6 +18,14 @@ class User(AbstractUser):
         verbose_name="user permissions"
     )
 
+    avatar = models.ImageField(
+        upload_to='avatars/',
+        null=True,
+        blank=True,
+        help_text="Profile picture of the user.",
+        verbose_name="avatar"
+    )
+
     class Meta:
         verbose_name = "user"
         verbose_name_plural = "users"

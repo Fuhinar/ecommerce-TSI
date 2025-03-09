@@ -1,44 +1,60 @@
+/* ================================= Terms of Use Page ================================= */
 .terms-of-use-page {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  .terms-of-use-header {
-    text-align: justify;
-    margin-bottom: 30px;
-    
-  }
-  
-  .terms-of-use-header h1 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-align: left;
-    margin-left: 10vh;
-  }
-  
-  .terms-of-use-header p {
-    font-size: 18px;
-    color: #555;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .terms-of-use-content {
-    margin-top: 30px;
-    margin-left: 10px;
-  }
-  
-  .terms-of-use-content h2 {
-    font-size: 19px;
-    margin-top: 20px;
-    margin-left: 37vh;
-  }
-  
-  .terms-of-use-content p {
-    font-size: 19px;
-    color: #555;
-    margin-top: 10px;
-    text-align: justify;
+  font-family: Arial, sans-serif;
+  padding: 60px 10%;
+  color: #333;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.terms-of-use-header {
+  text-align: justify;
+  margin-bottom: 50px;
+}
+
+.terms-of-use-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 25px;
+  text-align: left;
+  position: relative;
+  display: inline-block;
+}
+
+.terms-of-use-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #003366;
+}
+
+.terms-of-use-header p {
+  font-size: 1.125rem;
+  color: #555;
+  max-width: 800px;
+  line-height: 1.8;
+}
+
+.terms-of-use-content {
+  margin-top: 40px;
+}
+
+.terms-of-use-content h2 {
+  font-size: 1.4rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 500;
+}
+
+.terms-of-use-content p {
+  font-size: 1.125rem;
+  color: #555;
+  margin-top: 15px;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 20px;
 }

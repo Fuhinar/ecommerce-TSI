@@ -1,102 +1,137 @@
+/* ================================= Framed Canvas Page ================================= */
 .framed-canvas-page {
-    padding: 40px 10%;
-    
-  }
-  
-  .framed-canvas-header {
-    text-align: left;
-    margin-bottom: 40px;
-    margin-right: 10vh;
+  padding: 60px 10%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
 
-  }
-  
-  .framed-canvas-header h1 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 20px;
-  }
-  
-  .framed-canvas-header p {
-    font-size: 18px;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-  
-  .framed-canvas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-  }
-  
-  .framed-canvas-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .framed-canvas-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  .image-container {
-    width: 100%;
-    height: 200px;
-    background-color: #eaeaea;
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .framed-canvas-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .framed-canvas-info {
-    margin-top: 15px;
-    background-color: #fff;
-  }
-  
-  .artist-name,
-  .topic,
-  .price {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 8px;
-    background-color: #fff;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-  }
-  
-  .pagination-button {
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 0 5px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .pagination-button:hover {
-    background-color: #555;
-  }
-  
+.framed-canvas-page .framed-canvas-header {
+  text-align: left;
+  margin-bottom: 50px;
+  max-width: 800px;
+  justify-content: center;
+}
+
+.framed-canvas-page .framed-canvas-header h1 {
+  font-size: 1.75rem;
+  color: #333;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+.framed-canvas-page .framed-canvas-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #003366;
+}
+
+.framed-canvas-page .framed-canvas-header p {
+  font-size: 1.125rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.framed-canvas-page .framed-canvas-grid {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.framed-canvas-page .framed-canvas-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.framed-canvas-page .framed-canvas-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.framed-canvas-page .framed-canvas-grid .image-container {
+  width: 100%;
+  height: 220px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.framed-canvas-page .framed-canvas-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.framed-canvas-page .framed-canvas-card:hover .framed-canvas-image {
+  transform: scale(1.08);
+}
+
+.framed-canvas-page .framed-canvas-info {
+  margin-top: 15px;
+  padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.framed-canvas-page .framed-canvas-info .artist-name {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.framed-canvas-page .framed-canvas-info .topic {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.framed-canvas-page .framed-canvas-info .price {
+  font-size: 1.1rem;
+  color: #003366;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.framed-canvas-page .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.framed-canvas-page .pagination-button {
+  font-size: 1rem;
+  padding: 12px 25px;
+  margin: 0 8px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.framed-canvas-page .pagination-button:hover {
+  background-color: #333;
+  transform: translateY(-3px);
+}

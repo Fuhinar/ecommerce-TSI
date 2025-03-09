@@ -1,28 +1,46 @@
+/* ================================= Artists Text Section ================================= */
 .artists-text-section {
-    padding: 60px 15%; /* Пространство вокруг текста */
-    text-align: center; /* Центрирование заголовка */
-    
+  padding: 80px 15%;
+  text-align: center;
+  background-color: #f8f6f2;
+  margin: 40px 0;
 }
 
-.text-section-title {
-    font-size: 30px; /* Размер заголовка */
-    font-weight: lighter; /* Жирный шрифт */
-    margin-bottom: 25px; /* Отступ между заголовком и текстом */
-    color: #333; /* Тёмно-серый цвет для заголовка */
-    line-height: 1.5; /* Расстояние между строками */
-    font-family: 'Georgia', serif; /* Элегантный шрифт */
-    text-align: center; /* Заголовок выравнивается по центру */
+.artists-text-section .text-section-title {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+  color: #333;
+  line-height: 1.5;
+  font-family: "Georgia", serif;
+  text-align: center;
+  position: relative;
+  display: inline-block;
 }
 
-.text-section-content {
-    font-size: 20px; /* Размер текста чуть крупнее для читабельности */
-    line-height: 1.8; /* Оптимальное расстояние между строками */
-    color: #555; /* Средне-серый цвет для текста */
-    margin-bottom: 20px; /* Отступ между абзацами */
-    text-align: justify; /* Выравнивание текста по ширине */
-    font-family: 'Arial', sans-serif; /* Простой, легко читаемый шрифт */
+.artists-text-section .text-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #003366;
 }
 
-.text-section-content:last-child {
-    margin-bottom: 0; /* Убираем отступ после последнего абзаца */
+.artists-text-section .text-section-content {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 25px;
+  text-align: justify;
+  font-family: "Arial", sans-serif;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artists-text-section .text-section-content:last-child {
+  margin-bottom: 0;
 }

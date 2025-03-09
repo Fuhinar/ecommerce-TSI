@@ -1,13 +1,13 @@
 .footer-wrapper {
-    border: 2px solid #001f3f; /* Рамка блока */
+    border: 2px solid #001f3f; 
     display: flex;
-    justify-content: center; /* Центровка содержимого по горизонтали */
-    align-items: center; /* Центровка содержимого по вертикали */
-    margin: 40px auto; /* Отступы сверху и снизу */
-    padding: 20px; /* Внутренние отступы */
-    width: 80%; /* Ширина блока (можно настроить) */
-    box-sizing: border-box; /* Учитываем padding в ширину */
-    background-color: transparent; /* Цвет фона (можно оставить transparent) */
+    justify-content: center; 
+    align-items: center; 
+    margin: 40px auto; 
+    padding: 20px; 
+    width: 80%; 
+    box-sizing: border-box; 
+    background-color: transparent;
 	height: 100%;
 }
 
@@ -18,6 +18,14 @@
 }
 
 .footer-logo {
-    height: 180px; /* Высота логотипа */
-    width: auto; /* Сохраняем пропорции логотипа */
+    height: 180px; 
+    width: auto;
 }
+
+
+@media (max-width: 768px) {
+    .footer-logo {
+        height: auto; 
+        width: 300px;
+    }
+  }

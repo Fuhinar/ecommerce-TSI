@@ -1,45 +1,65 @@
+/* ================================= About Page ================================= */
 .about-page {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  .about-us-header {
-    text-align: justify;
-    margin-bottom: 30px;
-    
-  }
-  
-  .about-us-header h1 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-align: left;
-    margin-left: 10vh;
-    padding: 20px;
-  }
-  
-  .about-us-header p {
-    font-size: 18px;
-    color: #555;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .about-content {
-    margin-top: 30px;
-    margin-left: 10px;
-  }
-  
-  .about-us-content h2 {
-    font-size: 19px;
-    margin-top: 20px;
-    margin-left: 40vh;
-  }
-  
-  .about-us-content p {
-    font-size: 19px;
-    color: #555;
-    margin-top: 10px;
-    text-align: justify;
+  padding: 40px 20px;
+  color: #333;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-page .about-us-header {
+  text-align: justify;
+  margin-bottom: 50px;
+}
+
+.about-page .about-us-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 30px;
+  text-align: left;
+  margin-left: 5vw;
+  padding: 20px;
+  position: relative;
+}
+
+.about-page .about-us-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  width: 60px;
+  height: 3px;
+  background-color: #003366;
+}
+
+.about-page .about-us-header p {
+  font-size: 1.125rem;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.about-page .about-content {
+  margin-top: 40px;
+  margin-left: 10px;
+}
+
+.about-page .about-us-content h2 {
+  font-size: 1.4rem;
+  margin-top: 30px;
+  margin-left: 10vw;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 500;
+}
+
+.about-page .about-us-content p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 15px;
+  text-align: justify;
+  line-height: 1.8;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }

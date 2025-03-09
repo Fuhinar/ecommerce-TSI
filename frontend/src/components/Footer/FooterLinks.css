@@ -1,26 +1,32 @@
+/* ================================= Footer Links ================================= */
 .footer-links {
     display: flex;
-    justify-content: space-around; /* Равномерное распределение ссылок */
-    flex-wrap: wrap; /* Разрешаем перенос строк на малых экранах */
+    justify-content: space-around;
+    flex-wrap: wrap;
     list-style: none;
-    padding: 0;
+    padding: 20px 0;
     margin: 0;
-    gap: 20px; /* Промежуток между ссылками */
-}
-
-.footer-links a {
-    color: #ffffff; /* Белый цвет текста */
-    text-decoration: none; /* Убираем подчеркивание */
-    font-size: 14px; /* Уменьшаем размер шрифта */
-    transition: color 0.3s ease; /* Эффект при наведении */
-}
-
-.footer-links a:hover {
-    color: #ff6347; /* Оранжевый цвет текста при наведении */
-}
-
-.footer-links-container {
-    text-align: center; /* Центрируем текст */
-    margin: 0; /* Убираем отступы */
-}
-
+    gap: 30px;
+  }
+  
+  .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    padding: 5px 0;
+  }
+  
+  .footer-links a:hover {
+    color: #ff6347;
+    transform: translateY(-3px);
+  }
+  
+  .footer-links-container {
+    text-align: center;
+    margin: 0;
+    background-color: #001f3f;
+    padding: 40px 20px;
+    border-radius: 0 0 10px 10px;
+  }

@@ -15,9 +15,9 @@ export default function ArtistPersonalPage({ ArtistInfoPage, works }) {
   }
 
   return (
-    <div className="artist-personal-page">
+    <div className="artist-personal-page">  
       <header className="artist-header">
-        <h1>{artist.name}</h1>
+        <h1>{artist.secondName} {artist.name}</h1>
         <p>{artist.bio}</p>
       </header>
       <div className="artist-photos">

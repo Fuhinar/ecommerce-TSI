@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import { FaUser } from 'react-icons/fa';
+import './index.css';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';

@@ -1,13 +1,297 @@
-body {
+/* ================================= Global Reset & Base Styles ================================= */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+  overflow-x: hidden;
 }
+
+
+
+
+/* ================================= Responsive Media Queries ================================= */
+@media (max-width: 1200px) {
+  .artist-personal-page .works-grid,
+  .artists-work-section .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .nav {
+    margin-right: 5vh;
+  }
+
+  .artist-personal-page .artist-photo-2 {
+    width: 600px;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* General adjustments for tablets */
+  .artist-personal-page .artist-header h1,
+  .artist-personal-page .artist-header p {
+    margin-left: 5vw;
+  }
+
+  .artist-personal-page .works-grid {
+    padding: 0 5vw;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .classic-frames-page .classic-frames-grid,
+  .framed-canvas-page .framed-canvas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .artists-work-section {
+    padding: 40px 5%;
+  }
+
+  .artists-work-section .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .artists-section .artist-grid,
+  .artists-section .artists-grid {
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .nav {
+    margin-right: 3vh;
+    gap: 20px;
+  }
+
+  .topbar {
+    height: 8vh;
+  }
+
+  .terms-of-use-header h1,
+  .terms-of-use-content h2 {
+    margin-left: 0;
+  }
+
+  .artist-personal-page .artist-photo-1,
+  .artist-personal-page .artist-photo-2 {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .art-personal-page .art-image-large {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .artist-personal-page .artist-header h1,
+  .artist-personal-page .artist-header p,
+  .classic-frames-page .classic-frames-header,
+  .framed-canvas-page .framed-canvas-header,
+  .events-header,
+  .terms-of-use-header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .artist-personal-page .artist-header h1::after,
+  .classic-frames-page .classic-frames-header h1::after,
+  .framed-canvas-page .framed-canvas-header h1::after,
+  .events-header h1::after,
+  .eventst-header h1::after,
+  .terms-of-use-header h1::after,
+  .artists-section .artists-section-title::after,
+  .artists-section .section-title::after,
+  .artists-work-section h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .artist-personal-page .works-grid,
+  .classic-frames-page .classic-frames-grid,
+  .framed-canvas-page .framed-canvas-grid,
+  .artists-work-section .grid-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .artists-section .artist-grid,
+  .artists-section .artists-grid {
+    justify-content: center;
+  }
+
+  .art-personal-page .art-header-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .art-personal-page .art-image-large,
+  .art-personal-page .artist-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .artist-personal-page .subscribe {
+    width: 100%;
+    height: auto;
+    padding: 30px 20px;
+  }
+
+  .artist-personal-page .subscribe form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .artist-personal-page .subscribe input {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 15px;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 15px;
+    margin-right: 0;
+    align-items: center;
+  }
+
+  .header {
+    flex-direction: column;
+    padding: 10px 5%;
+    margin-top: 8vh;
+  }
+
+  .logo {
+    margin: 15px auto;
+    height: 80px;
+  }
+
+  .buttons {
+    margin-top: 15px;
+    justify-content: center;
+  }
+
+  .text-section .title {
+    font-size: 1.75rem;
+  }
+
+  .text-section .subtitle {
+    font-size: 1.1rem;
+    padding: 15px 10px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .artists-text-section {
+    padding: 40px 5%;
+  }
+
+  .artists-text-section .text-section-title {
+    font-size: 1.75rem;
+  }
+
+  .artists-text-section .text-section-content {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .terms-of-use-content p,
+  .terms-of-use-header p {
+    text-align: center;
+  }
+
+  .artists-section .artists-card,
+  .artists-section .artist-card {
+    width: 100%;
+    min-width: 280px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: flex;
+  }
+
+  .footer-logo {
+    width: 300px;
+    height: auto;
+}
+  
+  .footer-logo img {
+    width: 300px;
+    height: auto;
+}
+
+}
+
+/* @media (max-width: 480px) {
+  .artist-personal-page .artist-header h1,
+  .classic-frames-page .classic-frames-header h1,
+  .framed-canvas-page .framed-canvas-header h1,
+  .events-header h1,
+  .eventst-header h1,
+  .terms-of-use-header h1,
+  .artists-section-title,
+  .artists-section .section-title,
+  .artists-work-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .artist-personal-page .artist-header p,
+  .classic-frames-page .classic-frames-header p,
+  .framed-canvas-page .framed-canvas-header p,
+  .events-header p,
+  .terms-of-use-header p,
+  .terms-of-use-content p {
+    font-size: 1rem;
+  }
+
+  .artist-personal-page .subscribe h2 {
+    font-size: 1.5rem;
+  }
+
+  .artist-personal-page .subscribe p {
+    font-size: 1rem;
+  }
+
+  .artists-section .artists-card,
+  .artists-section .artist-card {
+    width: 100%;
+    min-width: 280px;
+  }
+
+  .text-section .title {
+    font-size: 1.5rem;
+  }
+
+  .text-section .subtitle {
+    font-size: 1rem;
+  }
+  
+} */
+
+
+

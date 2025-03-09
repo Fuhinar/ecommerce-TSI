@@ -1,81 +1,90 @@
+/* ================================= Artists Section ================================= */
 .artists-section {
-    text-align: center;
-    padding: 40px 19vh; /* Align section title horizontally */
-	display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  text-align: center;
+  padding: 60px 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
-.section-title {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: left; /* Align text to the left */
-    margin-left: 32vh;
-    
-}
-.artist-grid {
-    display: flex;
-    justify-content: center;
-    gap: 12vh; /* Adjust spacing between blocks */
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-	width: 100%;
-    align-items: center;
-    
-    
+.artists-section .artists-section-title {
+  font-size: 1.75rem;
+  margin-bottom: 40px;
+  color: #333;
+  position: relative;
+  display: inline-block;
+  text-align: center; /* Центрируем текст */
 }
 
-.artist-card {
-    width: 220px;
-    height: 250px; /* фиксируем высоту */
-    border: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    cursor: pointer;
-    overflow: hidden; /* чтобы обрезать картинку по границам карточки */
+.artists-section .artists-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%; /* Центрируем линию относительно заголовка */
+  transform: translateX(-50%); /* Сдвигаем линию влево на 50% её ширины */
+  width: 60px;
+  height: 3px;
+  background-color: #003366;
 }
 
-.image-container {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    overflow: hidden;
+.artists-section .artists-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 80px;
+  margin-bottom: 50px;
+  width: 100%;
 }
 
-.artist-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* обрезает изображение по размеру контейнера */
+.artists-section .artists-card {
+  width: 280px;
+  height: 280px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.artist-name {
-    font-size: 17px;
-    color: #555;
-    margin-top: 8px;
-    text-align: start;
+.artists-section .artists-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-.arrow {
-    font-size: 1.2rem;
-    color: #333;
+.artists-section .artists-image-container {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
 }
 
-.view-all-button {
-    margin: 50px auto;
-    display: block;
-    padding: 12px 24px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-	
+.artists-section .artists-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.view-all-button:hover {
-    background-color: #003366;
+.artists-section .artists-card:hover .artists-photo {
+  transform: scale(1.08);
+}
+
+.artists-section .artists-name {
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.artists-section .arrow {
+  font-size: 1.2rem;
+  color: #003366;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.artists-section .artists-card:hover .arrow {
+  transform: translateX(5px);
 }

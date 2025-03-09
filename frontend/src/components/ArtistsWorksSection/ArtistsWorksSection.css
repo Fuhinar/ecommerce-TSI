@@ -1,90 +1,112 @@
-h2 {
-    padding-left: 19vh;
-    padding-bottom: 10px;
+/* ================================= Artists Work Section ================================= */
+.artists-work-section {
+  background-color: #f8f6f2;
+  padding: 60px 10%;
+  margin: 40px auto;
+  max-width: 1600px;
+  border-radius: 12px;
 }
 
-.grid-container {
-    display: grid; 
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px 50px;
-    margin: 40px auto;
-    padding: 0 19vh;
-    
-  }
-  
-
-  .grid-item {
-    width: 200px;
-    height: 300px;              /* Фиксированная высота карточки */
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-    display: flex;             /* Добавим flex, чтобы разместить контент вертикально */
-    flex-direction: column;
-    justify-content: flex-start;  /* Картинка и текст идут сверху */
-    align-items: center;       /* Центрируем по горизонтали */
-    border: 1px solid black;
+.artists-work-section h2 {
+  text-align: left;
+  font-size: 1.75rem;
+  margin-bottom: 40px;
+  color: #333;
+  position: relative;
+  display: inline-block;
 }
 
-  .grid-item:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Блок для изображения */
-.image-container {
-    width: 100%;
-    height: 150px;       /* Фиксируем высоту под картинку */
-    overflow: hidden;    /* Чтобы изображение не вылезало за границы */
-    border-radius: 5px 5px 0 0; /* Скруглим верхние углы, если нужно */
-    margin-bottom: 10px;
-  }
-
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  /* Обрезает картинку, сохраняя пропорции */
-    display: block;
-  }
-  
-.grid-item img {
-    width: 100%; /* Адаптивная ширина */
-    height: auto; /* Сохраняем пропорции */
-    border-radius: 5px; /* Скругленные углы изображения */
-    margin-bottom: 15px; /* Отступ под изображением */
+.artists-work-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #003366;
 }
 
-.info {
-    padding-top: 10px;
-    background-color: #f9f9f9; /* Белый фон карточки */
+.artists-work-section .grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
 }
 
-.info p {
-    margin: 5px 0; /* Отступы между текстовыми строками */
-    font-size: 14px; /* Размер шрифта */
-    color: #333; /* Цвет текста */
-    background-color: #f9f9f9; /* Белый фон карточки */
-}
-.info p strong {
-    background-color: #f9f9f9; /* Белый фон карточки */
-    font-weight: lighter;
-    font-size: medium;
-}
-
-.view-all-button {
-    margin: 50px auto; /* Центрирование кнопки */
-    display: block;
-    padding: 12px 24px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+.artists-work-section .grid-item {
+  background-color: #fff;
+  border-radius: 10px;
+  height: 350px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.view-all-button:hover {
-    background-color: #333;
+.artists-work-section .grid-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.artists-work-section .grid-container .image-container {
+  width: 100%;
+  height: 220px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artists-work-section .grid-container .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.artists-work-section .grid-item:hover .image-container img {
+  transform: scale(1.08);
+}
+
+.artists-work-section .info {
+  padding: 20px;
+  text-align: left;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.artists-work-section .info p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.artists-work-section .info p strong {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.artists-work-section .view-all-button {
+  margin: 50px auto 0;
+  padding: 15px 30px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  text-align: center;
+  max-width: 200px;
+}
+
+.artists-work-section .view-all-button:hover {
+  background-color: #333;
+  transform: translateY(-3px);
 }

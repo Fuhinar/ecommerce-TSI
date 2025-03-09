@@ -7,25 +7,25 @@
 
 .footer {
     display: flex;
-    flex-direction: column; /* Вертикальное расположение секций */
-    align-items: center; /* Центрируем содержимое горизонтально */
-    padding: 30px 20px; /* Отступы */
-    background-color: #001f3f; /* Цвет фона */
-    color: #ffffff; /* Цвет текста */
-    width: 100%; /* Занимает всю ширину */
-    box-sizing: border-box; /* Учитываем отступы в ширину */
+    flex-direction: column; 
+    align-items: center; 
+    padding: 30px 20px;
+    background-color: #001f3f; 
+    color: #ffffff; 
+    width: 100%;
+    box-sizing: border-box;
 }
 .footer-links-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 0; /* Убираем внешние отступы */
-    padding: 0; /* Убираем внутренние отступы */
+    margin: 0;
+    padding: 0;
     width: 100%; 
-    background-color: #001f3f; /* Совпадает с фоном */
-    border: none; /* Убираем границы */
-    box-shadow: none; /* Убираем тени */
+    background-color: #001f3f; 
+    border: none;
+    box-shadow: none; 
 }
 .footer-heading {
     font-size: 18px;
@@ -40,41 +40,31 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 40px; /* Промежуток между ссылками */
-    list-style: none; /* Убираем маркеры списка */
-    margin: 0; /* Убираем внешние отступы */
-    padding: 0; /* Убираем внутренние отступы */
-    background-color: transparent; /* Фон совпадает */
-    border: none; /* Убираем границы */
+    gap: 40px; 
+    list-style: none; 
+    margin: 0;
+    padding: 0; 
+    background-color: transparent;
+    border: none; 
 }
 .footer-links li {
-    background-color: transparent; /* Убираем фон */
+    background-color: transparent;
 }
 
 
 .footer-links a {
     color: #ffffff;
-    text-decoration: none; /* Убираем подчеркивание */
+    text-decoration: none; 
     font-size: 14px;
-    background-color: transparent; /* Убираем фон */
+    background-color: transparent; 
     transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #ff6347; /* Цвет при наведении */
-    background-color: transparent; /* Убираем фон при наведении */
+    color: #ff6347; 
+    background-color: transparent; 
 }
 
-.footer-country-selector {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Выравнивание по левому краю */
-    gap: 10px;
-    width: 100%; /* Занимает всю ширину секции */
-    margin-bottom: 20px;
-    margin-left: 50px;
-    background-color: #001f3f;
-}
 
 label[for="country"] {
     font-size: 16px;
@@ -83,23 +73,10 @@ label[for="country"] {
     background-color: #001f3f;
 }
 
-.country-selector {
-    width: 250px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ffffff;
-    background-color: #001f3f;
-    color: #ffffff;
-    font-size: 14px;
-}
-
-.country-selector option {
-    background-color: transparent;
-}
 .footer-social-links {
     display: flex;
-    justify-content: center; /* Центрируем социальные иконки */
-    gap: 20px; /* Промежуток между иконками */
+    justify-content: center; 
+    gap: 20px; 
     background-color: transparent;
 }
 
@@ -115,5 +92,5 @@ label[for="country"] {
 }
 
 .social-icon:hover {
-    color: #ff6347; /* Цвет при наведении */
+    color: #ff6347;
 }
