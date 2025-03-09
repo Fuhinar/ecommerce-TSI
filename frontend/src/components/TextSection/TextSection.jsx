@@ -4,8 +4,8 @@ import './TextSection.css'; // Assuming you're adding styles in a separate CSS f
 export default function TextSection() {
     return (
         <div className='text-section'>
-            <div className='text-line title'>When creativity knows no boundaries:</div>
-            <div className='text-line subtitle'>Art created by unique artists</div>
+            <div className='text-line title'>Когда творчество не знает границ:</div>
+            <div className='text-line subtitle'>Искусство, созданное уникальными художниками</div>
         </div>
     );
 }

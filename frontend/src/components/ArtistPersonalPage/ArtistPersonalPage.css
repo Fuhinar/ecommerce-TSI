@@ -3,20 +3,23 @@
   padding: 20px;
   max-width: 1600px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .artist-personal-page .artist-header {
   margin-bottom: 40px;
+  position: relative;
 }
 
 .artist-personal-page .artist-header h1 {
-  font-size: 1.75rem;
+  font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333;
   text-align: left;
   margin-left: 10vw;
   margin-top: 10vh;
-  font-weight: 500;
+  font-weight: 700;
+  animation: fadeInDown 1s ease-in-out;
 }
 
 .artist-personal-page .artist-header p {
@@ -27,6 +30,7 @@
   text-align: justify;
   max-width: 1000px;
   line-height: 1.8;
+  animation: fadeInUp 1s ease-in-out;
 }
 
 .artist-personal-page .artist-photos {
@@ -36,6 +40,7 @@
   margin-bottom: 50px;
   flex-wrap: wrap;
   align-items: center;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .artist-personal-page .artist-photo-1,
@@ -45,7 +50,6 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .artist-personal-page .artist-photo-1:hover,
 .artist-personal-page .artist-photo-2:hover {
@@ -66,20 +70,21 @@
 .artist-personal-page .artist-works {
   margin-top: 10vh;
   margin-left: 5vw;
+  animation: fadeInUp 1.5s ease-in-out;
 }
 
 .artist-personal-page .artist-works h2 {
   text-align: justify;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 30px;
   margin-left: 8vw;
-  font-weight: 400;
+  font-weight: 600;
   color: #333;
 }
 
 .artist-personal-page .works-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 40px 50px;
   margin: 40px auto;
   padding: 0 5vw;
@@ -102,7 +107,8 @@
 }
 
 .artist-personal-page .work-image {
-  width: 100%;
+  width: auto;
+  height: 350px;
   border-radius: 6px;
   transition: transform 0.5s ease;
 }
@@ -126,6 +132,7 @@
 .artist-personal-page .artist-footer {
   margin-top: 80px;
   text-align: center;
+  animation: fadeInUp 2s ease-in-out;
 }
 
 /* Subscribe block */
@@ -141,6 +148,7 @@
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 51, 102, 0.2);
   transition: transform 0.3s ease;
+  animation: fadeIn 2s ease-in-out;
 }
 
 .artist-personal-page .subscribe:hover {
@@ -156,15 +164,15 @@
 }
 
 .artist-personal-page .subscribe h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 20px;
   padding: 0 5vw;
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .artist-personal-page .subscribe p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 25px;
   opacity: 0.9;
 }
@@ -208,4 +216,128 @@
 
 .artist-personal-page .subscribe input[type="submit"]:hover {
   background-color: #f0f0f0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .artist-personal-page .artist-header h1 {
+    font-size: 2rem;
+  }
+
+  .artist-personal-page .artist-header p {
+    font-size: 1.1rem;
+  }
+
+  .artist-personal-page .artist-photo-2 {
+    width: 600px;
+    height: 350px;
+  }
+
+  .artist-personal-page .works-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .artist-personal-page .artist-header h1 {
+    font-size: 1.8rem;
+    margin-left: 5vw;
+  }
+
+  .artist-personal-page .artist-header p {
+    font-size: 1rem;
+    margin-left: 5vw;
+  }
+
+  .artist-personal-page .artist-photo-1 {
+    width: 250px;
+    height: 300px;
+  }
+
+  .artist-personal-page .artist-photo-2 {
+    width: 100%;
+    height: 300px;
+  }
+
+  .artist-personal-page .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .artist-personal-page .subscribe h2 {
+    font-size: 1.5rem;
+  }
+
+  .artist-personal-page .subscribe p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .artist-personal-page .artist-header h1 {
+    font-size: 1.5rem;
+    margin-left: 5vw;
+  }
+
+  .artist-personal-page .artist-header p {
+    font-size: 0.9rem;
+    margin-left: 5vw;
+  }
+
+  .artist-personal-page .artist-photo-1 {
+    width: 200px;
+    height: 250px;
+  }
+
+  .artist-personal-page .artist-photo-2 {
+    width: 100%;
+    height: 250px;
+  }
+
+  .artist-personal-page .works-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .artist-personal-page .subscribe h2 {
+    font-size: 1.2rem;
+  }
+
+  .artist-personal-page .subscribe p {
+    font-size: 0.9rem;
+  }
+
+  .artist-personal-page .subscribe input {
+    min-width: 100%;
+  }
 }

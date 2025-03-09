@@ -18,13 +18,14 @@ import ClassicFrames from "./components/ClassicFrames/ClassicFrames";
 import Events from "./components/Events/Events";
 import TermsOfUse from "./components/TermsofUse/TermsofUse";
 import AboutUs from "./components/AboutUs/AboutUs";
+import CartPage from "./components/CartPage/CartPage"; // Добавьте этот импорт
+import { CartProvider } from './context/CartContext';
 
 function App() {
   // Состояния для данных из API
   const [artists, setArtists] = useState([]);
   const [eventsData, setEventsData] = useState([]);
   const [products, setProducts] = useState([]);
-  
 
   useEffect(() => {
     // Получение данных артистов
@@ -60,95 +61,104 @@ function App() {
   const classicItems = products.filter(p => p.category !== 'painting');
 
   return (
-    <Router>
-      <Header />
-      <Routes>
-        {/* Главная страница */}
-        <Route
-          path="/"
-          element={
-            <>
-              <TextSection />
-              <ArtistSection artists={artists} />
-              <ArtistsWorksSection products={products} />
-              <FooterLogo />
-              <Footer />
-            </>
-          }
-        />
+    <CartProvider>
+      <Router>
+        <Header />
+        <Routes>
+          {/* Главная страница */}
+          <Route
+            path="/"
+            element={
+              <>
+                <TextSection />
+                <ArtistSection artists={artists} />
+                <ArtistsWorksSection products={products} />
+                <FooterLogo />
+                <Footer />
+              </>
+            }
+          />
 
-        {/* Страница со всеми художниками */}
-        <Route
-          path="/artist"
-          element={
-            <>
-              <Artists ArtistsPage={artists} />
-              <ArtistsText />
-              <FooterLogo />
-              <Footer />
-            </>
-          }
-        />
+          {/* Страница со всеми художниками */}
+          <Route
+            path="/artist"
+            element={
+              <>
+                <Artists ArtistsPage={artists} />
+                <ArtistsText />
+                <FooterLogo />
+                <Footer />
+              </>
+            }
+          />
 
-        {/* Страница одного художника */}
-        <Route
-          path="/artistpersonalpage/:artistId"
-          element={
-            <>
-              <ArtistPersonalPage ArtistInfoPage={artists} works={products} />
-              <FooterLogo />
-              <Footer />
-            </>
-          }
-        />
+          {/* Страница корзины */}
+          <Route path="/cart" element={<CartPage />} />
 
-        {/* Страница одной работы */}
-        <Route
-          path="/artpersonalpage/:workId"
-          element={
-            <>
-              <ArtPersonalPage works={products} artists={artists} />
-              <FooterLogo />
-              <Footer />
-            </>
-          }
-        />
+          {/* Страница одного художника */}
+          <Route
+            path="/artistpersonalpage/:artistId"
+            element={
+              <>
+                <ArtistPersonalPage ArtistInfoPage={artists} works={products} />
+                <FooterLogo />
+                <Footer />
+              </>
+            }
+          />
 
-        {/* Страница с рамками, фильтруем по категориям */}
-        <Route
-          path="/framed-canvas"
-          element={<FramedCanvas products={framedItems} />}
-        />
-        <Route
-          path="/classic-frames"
-          element={<ClassicFrames products={classicItems} />}
-        />
+          {/* Страница одной работы */}
+          <Route
+            path="/artpersonalpage/:workId"
+            element={
+              <>
+                <ArtPersonalPage works={products} artists={artists} />
+                <FooterLogo />
+                <Footer />
+              </>
+            }
+          />
 
-        <Route
-          path="/events"
-          element={<Events events={eventsData} />}
-        />
+          {/* Страница с рамками, фильтруем по категориям */}
+          <Route
+            path="/framed-canvas"
+            element={<FramedCanvas products={framedItems} />}
+          />
+          <Route
+            path="/classic-frames"
+            element={<ClassicFrames products={classicItems} />}
+          />
 
-        <Route
-          path="/terms"
-          element={
-            <>
-              <TermsOfUse />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <>
-              <AboutUs />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-    </Router>
+          {/* Страница событий */}
+          <Route
+            path="/events"
+            element={<Events events={eventsData} />}
+          />
+
+          {/* Страница условий использования */}
+          <Route
+            path="/terms"
+            element={
+              <>
+                <TermsOfUse />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Страница "О нас" */}
+          <Route
+            path="/about"
+            element={
+              <>
+                <AboutUs />
+                <Footer />
+              </>
+            }
+          />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 

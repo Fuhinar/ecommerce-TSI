@@ -7,12 +7,12 @@ export default function AboutUs() {
       <div className="about-us-header">
         <h1>About Us</h1>
         <section className="about-us-content">
-          <h2>WHO ARE WE?</h2>
-          <p> Our team consists of third-year students from the Innovation College at AUCA, each representing their area of expertise: designers, programmers, managers, environmentalists, entrepreneurs, and financiers.</p>
-          <p> By using our site, you agree to these terms and conditions. Please read them carefully before using our service.</p>
-          <h2>WHY THE NAME "WEAVEART"?</h2>
-          <p>The name WeaveArt deeply reflects the essence of our project: the word "weave" symbolizes the interconnection through art. WeaveArt also emphasizes the importance of art as a means of expression, which not only inspires but also helps children with special needs, including autism, to showcase their uniqueness through creativity.</p>
-          <p>We aim for the artwork of these talented children to be recognized and appreciated, allowing people to learn about them. We want to create a communication bridge between children and society through their art so that each child feels their uniqueness and the significance of their contribution. Their passion for creativity deserves attention, and we are confident that their work can inspire and help change the world for the better.</p>
+          <h2>Кто мы?</h2>
+          <p> Наша команда состоит из студентов третьего курса Инновационного колледжа АУЦА, каждый из которых представляет свою область знаний: дизайнеры, программисты, менеджеры, экологи, предприниматели и финансисты.</p>
+          <p> Используя наш сайт, вы соглашаетесь с этими условиями. Пожалуйста, внимательно прочтите их перед использованием нашего сервиса.</p>
+          <h2>Почему название «WeaveArt»?</h2>
+          <p>Название WeaveArt глубоко отражает суть нашего проекта: слово «weave» символизирует взаимосвязь через искусство. WeaveArt также подчеркивает важность искусства как средства выражения, которое не только вдохновляет, но и помогает детям с особыми потребностями, в том числе с аутизмом, продемонстрировать свою уникальность через творчество.</p>
+          <p>Мы стремимся к тому, чтобы творчество этих талантливых детей было признано и оценено, что позволит людям узнать о них. Мы хотим создать мост общения между детьми и обществом через их творчество, чтобы каждый ребенок чувствовал свою уникальность и значимость своего вклада. Их страсть к творчеству заслуживает внимания, и мы уверены, что их работа может вдохновить и помочь изменить мир к лучшему.</p>
         </section>
       </div>
     </div>

@@ -152,3 +152,25 @@
   border-color: #003366;
   box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
 }
+
+@media screen and (max-width: 768px) {
+  .art-personal-page .art-header-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .art-personal-page .art-image-large {
+    width: 100%;
+    height: 400px;
+  }
+
+  .art-personal-page .artist-info {
+    align-items: center;
+  }
+
+  .art-personal-page .artist-photo {
+    width: 100%;
+    height: 300px;
+  }
+  
+}

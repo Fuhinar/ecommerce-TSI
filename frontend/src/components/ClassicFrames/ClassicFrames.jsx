@@ -5,12 +5,12 @@ export default function ClassicFrames({ products = [] }) {
   return (
     <div className="classic-frames-page">
       <div className="classic-frames-header">
-        <h1>Classic Frames</h1>
+        <h1>Классические рамки</h1>
         <p>
-          Our artists with special needs bring a wide range of creativity to their work. Each piece reflects their unique vision and style.
+          Наши художники с особыми потребностями привносят в свою работу широкий спектр креативности. Каждая работа отражает их уникальное видение и стиль.
         </p>
         <p>
-          Classic frames highlight the uniqueness of each piece, emphasizing its best qualities. They give the artwork a finished and polished look.
+          Классические рамы подчеркивают уникальность каждого произведения, подчеркивая его лучшие качества. Они придают произведению искусства законченный и отполированный вид.
         </p>
       </div>
 
@@ -21,9 +21,9 @@ export default function ClassicFrames({ products = [] }) {
               <img src={item.image} alt={item.name} className="classic-frames-image" />
             </div>
             <div className="classic-frames-info">
-              <p className="artist-name">Artist name: {item.artist}</p>
-              <p className="topic">Topic: {item.topic}</p>
-              <p className="price">Price: {item.price}</p>
+              <p className="artist-name">Имя художника: {item.artist}</p>
+              <p className="topic">Тема: {item.topic}</p>
+              <p className="price">Цена: {item.price} Сом</p>
             </div>
           </div>
         ))}

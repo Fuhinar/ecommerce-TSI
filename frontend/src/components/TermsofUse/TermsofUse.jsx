@@ -7,26 +7,23 @@ export default function TermsofUse() {
       <div className="terms-of-use-header">
         <h1>Terms of Use</h1>
         <section className="terms-of-use-content">
-            <h2>1. Introduction</h2>
-            <p>Welcome to our website! WeaveArt is a marketplace that sells unique artwork by children with disabilities, autism and cancer. Customers can buy paintings and merchandise with images of these works, thus supporting the authors. All funds raised from the sale of works go directly to the authors through their personal MbankJunior cards.</p>
-            <p>By using our site, you agree to these terms and conditions. Please read them carefully before using our service.</p>
-            <h2>2. User Responsibilities</h2>
-            <p>Users are obliged to provide accurate information when registering on the site and when making purchases. Users are also obliged to comply with all applicable laws and not to use our site for illegal purposes. Violation of these rules may result in blocking access to the Marketplace.</p>
-            <h2>3. Payment and Delivery</h2>
-            <p>Payment for goods on our site is made through secure payment systems such as MBank, VISA, ElCard. After payment confirmation, the order will be processed and the goods will be shipped to your specified address. Delivery time depends on your location and the chosen shipping method. Orders for paintings may take up to 5 business days to process as each piece is unique.
-             </p>
-            <h2>4. Returns and Refunds</h2>
-            <p>All sales are final as each product is a unique work created by children. We only accept returns if the item was damaged during shipping. In this case, the buyer must contact our customer service within 7 days of receiving the order. Refunds are made to the same card from which the payment was made.</p>
-            <h2>5. Rights to Artwork</h2>
-            <p>All rights to artwork on the site belong to the authors - the children who created them. The purchase of a work does not transfer copyright to the purchaser. Child authors receive ..% of the profits from the sale of their works directly to their personal MbankJunior cards.</p>
-            <h2> 6. Exhibitions and Events</h2>
-            <p>We regularly organize exhibitions, galleries and other events where children's works can be seen live and purchased. Information about upcoming events can be found in the "events" section of our website. We also organize New Year campaigns where children can receive gifts for their participation.</p>
-            <h2> 7. Pricing</h2>
-            <p>Prices for paintings and merch vary depending on the complexity of the work and the materials used. The minimum cost of a work starts from 4000 KGS for a small painting. Prices for exclusive works can reach 15000 KGS. Merch with pictures of paintings costs from 3500 to 8000 KGS depending on the type of goods (T-shirts, hoodies, etc.).</p>
-            <h2>8. Changes to Terms</h2>
-            <p>We reserve the right to change these terms and conditions at any time without prior notice. Please check this page regularly for the latest terms and conditions.</p>
-            
-
+            <h2>1. Введение</h2>
+            <p>Добро пожаловать на наш сайт! WeaveArt — это торговая площадка, на которой продаются уникальные работы детей с ограниченными возможностями, аутизмом и раком. Покупатели могут покупать картины и товары с изображениями этих работ, тем самым поддерживая авторов. Все средства, полученные от продажи работ, поступают напрямую авторам на их персональные карты MbankJunior.</p>
+            <p>Используя наш сайт, вы соглашаетесь с этими условиями. Пожалуйста, внимательно прочтите их перед использованием нашего сервиса.</p>
+            <h2>2. Обязанности пользователя</h2>
+            <p>Пользователи обязаны предоставлять достоверную информацию при регистрации на сайте и совершении покупок. Пользователи также обязаны соблюдать все применимые законы и не использовать наш сайт в незаконных целях. Нарушение этих правил может привести к блокировке доступа к Marketplace.</p>
+            <h2>3. Оплата и доставка</h2>
+            <p>Оплата товаров на нашем сайте осуществляется через защищенные платежные системы MBank, VISA, ElCard. После подтверждения оплаты заказ будет обработан и товар будет отправлен по указанному вами адресу. Срок доставки зависит от вашего местонахождения и выбранного способа доставки. Обработка заказов на картины может занять до 5 рабочих дней, так как каждое произведение уникально.</p>
+            <h2>4. Возвраты и возмещения</h2>
+            <p>Все продажи являются окончательными, поскольку каждый продукт является уникальной работой, созданной детьми. Мы принимаем возврат только в том случае, если товар был поврежден во время доставки. В этом случае покупатель должен связаться с нашей службой поддержки клиентов в течение 7 дней с момента получения заказа. Возврат средств осуществляется на ту же карту, с которой была произведена оплата.</p>
+            <h2>5. Права на произведение искусства</h2>
+            <p>Все права на художественные работы на сайте принадлежат авторам - детям, которые их создали. Покупка работы не передает авторские права покупателю. Дети-авторы получают ..% от прибыли от продажи своих работ напрямую на свои персональные карты MbankJunior.</p>
+            <h2> 6. Выставки и мероприятия</h2>
+            <p>Мы регулярно организуем выставки, галереи и другие мероприятия, где можно увидеть вживую и приобрести детские работы. Информацию о предстоящих мероприятиях можно найти в разделе «мероприятия» нашего сайта. Мы также организуем новогодние акции, в которых дети могут получить подарки за участие.</p>
+            <h2> 7. Ценообразование</h2>
+            <p>Цены на картины и мерч варьируются в зависимости от сложности работы и используемых материалов. Минимальная стоимость работы начинается от 4000 сом за небольшую картину. Цены на эксклюзивные работы могут достигать 15000 сом. Мерч с изображениями картин стоит от 3500 до 8000 сом в зависимости от вида товара (футболки, толстовки и т.д.).</p>
+            <h2>8. Изменения в Условиях</h2>
+            <p>Мы оставляем за собой право изменять эти положения и условия в любое время без предварительного уведомления. Пожалуйста, регулярно проверяйте эту страницу на предмет последних положений и условий.</p>
         </section>
     </div>
    </div>

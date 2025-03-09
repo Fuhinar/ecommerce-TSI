@@ -1,31 +1,39 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./FramedCanvas.css";
 
 export default function FramedCanvas({ products = [] }) {
+  const navigate = useNavigate();
+
+  const handleCardClick = (id) => {
+    navigate(`/artpersonalpage/${id}`);
+  };
+
   return (
     <div className="framed-canvas-page">
       <div className="framed-canvas-header">
-        <h1>Framed Canvas</h1>
+        <h1>Холст в рамке</h1>
         <p>
-          When you purchase a painting created by children, you're not just acquiring an image—
-          you're bringing home a unique story and emotions.
+          Приобретая картину, созданную детьми, вы приобретаете не просто изображение — вы привозите домой уникальную историю и эмоции. Каждая картина — это произведение искусства, которое вдохновляет и радует глаз.
         </p>
         <p>
-          A frame gives the artwork a finished look and highlights its beauty,
-          making it a true focal point in your decor.
+          Рама придает произведению искусства завершенный вид и подчеркивает его красоту, делая его настоящим центром внимания в вашем интерьере.
         </p>
       </div>
 
       <div className="framed-canvas-grid">
         {products.map((item, index) => (
-          <div key={index} className="framed-canvas-card">
+          <div
+            key={index}
+            className="framed-canvas-card"
+            onClick={() => handleCardClick(item.id)} // Добавьте обработчик клика
+          >
             <div className="image-container">
               <img src={item.image} alt={item.title} className="framed-canvas-image" />
             </div>
             <div className="framed-canvas-info">
-              <p className="artist-name">Artist name: {item.artist}</p>
-              <p className="description">Description: {item.description}</p>
-              <p className="price">Price: {item.price}</p>
+              <p className="description">{item.description}</p>
+              <p className="price">Цена: {item.price} Сом</p>
             </div>
           </div>
         ))}

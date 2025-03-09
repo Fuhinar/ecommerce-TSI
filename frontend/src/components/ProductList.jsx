@@ -21,7 +21,7 @@ const ProductList = () => {
         <div key={product.id}>
           <h3>{product.name}</h3>
           <p>{product.description}</p>
-          <p>{product.price} USD</p>
+          <p>{product.price} Сом</p>
         </div>
       ))}
     </div>

@@ -5,8 +5,8 @@ export default function Events({ events = [] }) {
   return (
     <div className="events-page">
       <div className="events-header">
-        <h1>Upcoming Events and Collections</h1>
-        <p>Welcome to the page where we share updates about upcoming events and new collections from our talented artists! Here, you’ll find information about exhibitions, workshops, and seasonal artwork series, such as special New Year collections with festive vibes.</p>
+        <h1>Предстоящие события и коллекции</h1>
+        <p>Добро пожаловать на страницу, где мы делимся новостями о предстоящих событиях и новых коллекциях наших талантливых художников! Здесь вы найдете информацию о выставках, мастер-классах и сезонных сериях произведений искусства, таких как специальные новогодние коллекции с праздничным настроением.</p>
     </div>
    </div>
   )

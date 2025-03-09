@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "./Artists.css";
 
 export default function Artists({ ArtistsPage = [] }) {
-  const navigate = useNavigate(); // Хук для навигации
+  const navigate = useNavigate();
 
   return (
     <div className="artists-section">
-      <h2 className="artists-section-title">Our Artists</h2>
+      <h2 className="artists-section-title">Наши художники</h2>
       <div className="artists-grid">
         {ArtistsPage.map((artist) => (
           <div

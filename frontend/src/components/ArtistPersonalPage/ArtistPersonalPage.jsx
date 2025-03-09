@@ -26,7 +26,7 @@ export default function ArtistPersonalPage({ ArtistInfoPage, works }) {
       </div>
 
       <section className="artist-works">
-        <h2>Artist's works:</h2>
+        <h2>Работы художника:</h2>
         <div className="works-grid">
           {artistsWorks.map((work) => (
             <div
@@ -37,7 +37,7 @@ export default function ArtistPersonalPage({ ArtistInfoPage, works }) {
             >
               <img src={work.image} alt={work.topic} className="work-image" />
               <p className="work-title">{work.topic}</p>
-              <p className="work-price">Price: {work.price}</p>
+              <p className="work-price">Цена: {work.price} Сом</p>
             </div>
           ))}
         </div>
@@ -45,8 +45,8 @@ export default function ArtistPersonalPage({ ArtistInfoPage, works }) {
 
       {/* Subscribe Section */}
       <section className="subscribe">
-        <h2>Subscribe to our emails</h2>
-        <p>Stay informed about new works and updates from this artist.</p>
+        <h2>Подпишитесь на нашу рассылку</h2>
+        <p>Будьте в курсе новых работ и обновлений этого художника.</p>
         <form
           className="subscribe-form"
           onSubmit={(e) => {

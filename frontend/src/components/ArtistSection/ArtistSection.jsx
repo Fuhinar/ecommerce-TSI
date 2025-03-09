@@ -7,13 +7,13 @@ export default function ArtistSection({ artists = [] }) {
 
   return (
     <div className="artist-section">
-      <h2 className="section-title">Some of our artists:</h2>
+      <h2 className="section-title">Некоторые из наших художников:</h2>
       <div className="artist-grid">
         {artists.slice(0, 3).map((artist) => (
           <div
             key={artist.id}
             className="artist-card"
-            onClick={() => history(`/artistpersonalpage/${artist.id}`)} // Перенаправление на страницу художника
+            onClick={() => history(`/artistpersonalpage/${artist.id}`)}
           >
             <div className="image-container">
               <img src={artist.photo} alt={artist.name} className="artist-photo" />
@@ -24,7 +24,7 @@ export default function ArtistSection({ artists = [] }) {
       </div>
       <button
         className="view-all-button"
-        onClick={() => history('/artist')} // Переход на страницу всех художников
+        onClick={() => history('/artist')} 
       >
         View All
       </button>

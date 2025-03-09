@@ -50,7 +50,7 @@
 
 .artists-work-section .grid-container .image-container {
   width: 100%;
-  height: 220px;
+  min-height: 220px;
   background-color: #f0f0f0;
   overflow: hidden;
   display: flex;
@@ -109,4 +109,15 @@
 .artists-work-section .view-all-button:hover {
   background-color: #333;
   transform: translateY(-3px);
+}
+
+@media screen and (max-width: 784px) {
+  .artists-work-section .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .artists-work-section .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
 }

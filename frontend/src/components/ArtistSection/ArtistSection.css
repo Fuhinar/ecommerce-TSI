@@ -1,28 +1,27 @@
 /* ================================= Artists Section ================================= */
 .artists-section {
-  text-align: center;
+  text-align: start;
   padding: 60px 10%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: start;
   max-width: 1600px;
   margin: 0 auto;
 }
 
 .artists-section .artists-section-title {
   font-size: 1.75rem;
-  margin-bottom: 40px;
   color: #333;
+  margin-bottom: 25px;
   position: relative;
   display: inline-block;
-  text-align: center; /* Центрируем текст */
 }
 
 .artists-section .artists-section-title::after {
   content: "";
   position: absolute;
   bottom: -10px;
-  left: 50%; /* Центрируем линию относительно заголовка */
+  left: 20%; /* Центрируем линию относительно заголовка */
   transform: translateX(-50%); /* Сдвигаем линию влево на 50% её ширины */
   width: 60px;
   height: 3px;
