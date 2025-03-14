@@ -30,6 +30,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'  # SMTP-сервер
+# EMAIL_PORT = 587  # Порт для TLS
+# EMAIL_USE_TLS = True  # Использовать TLS
+# EMAIL_HOST_USER = 'weaveart.kg@gmail.com'  # Ваш email
+# EMAIL_HOST_PASSWORD = 'Ghuas1423!'  # Пароль от email
+# DEFAULT_FROM_EMAIL = 'weaveart.kg@gmail.com'  # Email отправителя
+
 
 # Application definition
 
@@ -42,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 
     'products',
@@ -51,6 +60,7 @@ INSTALLED_APPS = [
     'events',
 ]
 
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -58,6 +68,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
 }
 

@@ -74,7 +74,7 @@
   display: flex;
   align-items: center;
   gap: 30px;
-  margin-top: 30px;
+  margin-top: 10px;
   width: 200px;
 }
 
@@ -443,12 +443,12 @@
   }
 
   .buttons {
-    margin-top: -100px;
+    margin-top: -90px;
     margin-left: auto; /* Кнопки корзины и поиска справа */
   }
 
   .logo {
-    margin-left: -100px;
+    margin-left: -300px;
   }
 }
 
@@ -472,10 +472,22 @@
   .logo {
     width: 200px;
     height: auto;
-    margin: 20px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
 @media (max-width: 600px) {
-  
+  .logo {
+    width: 150px;
+    height: auto;
+    margin-left: -160px;
+  }
+
+  .buttons {
+    margin-top: -80px;
+  }
 }

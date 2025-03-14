@@ -26,7 +26,7 @@ export default function FramedCanvas({ products = [] }) {
           <div
             key={index}
             className="framed-canvas-card"
-            onClick={() => handleCardClick(item.id)} // Добавьте обработчик клика
+            onClick={() => handleCardClick(item.id)}
           >
             <div className="image-container">
               <img src={item.image} alt={item.title} className="framed-canvas-image" />

@@ -1,4 +1,4 @@
-// src/context/CartContext.js
+// CartContext.js
 import React, { createContext, useState } from 'react';
 
 export const CartContext = createContext();
@@ -6,12 +6,21 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (item) => {
-    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+  const addToCart = (product, options = {}) => {
+    const existingItem = cartItems.find((item) => item.id === product.id && item.variant?.id === options.variant?.id);
+
     if (existingItem) {
-      updateQuantity(item.id, existingItem.quantity + 1);
+      // Если товар уже в корзине, увеличиваем количество
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id && item.variant?.id === options.variant?.id
+            ? { ...item, quantity: item.quantity + (options.quantity || 1) }
+            : item
+        )
+      );
     } else {
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+      // Если товара нет в корзине, добавляем его
+      setCartItems([...cartItems, { ...product, ...options, quantity: options.quantity || 1 }]);
     }
   };
 
@@ -19,26 +28,12 @@ export const CartProvider = ({ children }) => {
     setCartItems(cartItems.filter((item) => item.id !== itemId));
   };
 
-  const updateQuantity = (itemId, newQuantity) => {
-    if (newQuantity <= 0) {
-      removeFromCart(itemId);
-    } else {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === itemId ? { ...item, quantity: newQuantity } : item
-        )
-      );
-    }
-  };
-
   const clearCart = () => {
     setCartItems([]);
   };
 
   return (
-    <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart }}
-    >
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );

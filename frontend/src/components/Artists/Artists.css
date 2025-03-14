@@ -1,31 +1,46 @@
+/* ================================= Artists Section ================================= */
 .artists-section {
     text-align: center;
     padding: 40px 19vh;
-	display: flex;
+    display: flex;
     flex-direction: column;
-}
-
-.section-title {
+    opacity: 0; /* Начальное состояние для анимации */
+    animation: fadeIn 1s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .section-title {
     font-size: 20px;
     margin-bottom: 20px;
     color: #333;
     text-align: center;
-    
-}
-.artist-grid {
+    opacity: 0; /* Начальное состояние для анимации */
+    animation: fadeIn 0.8s ease 0.5s forwards;
+  }
+  
+  .artist-grid {
     display: flex;
     justify-content: center;
-    gap: 16vh; 
+    gap: 16vh;
     flex-wrap: wrap;
     margin-bottom: 30px;
-	width: 100%;
+    width: 100%;
     align-items: center;
-    
-}
-
-.artist-card {
+  }
+  
+  .artist-card {
     width: 330px;
-    height: 360px; 
+    height: 360px;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -33,35 +48,63 @@
     overflow: hidden;
     border-radius: 0px 0px 8px 8px;
     font-weight: 500;
-}
-
-.image-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; /* Начальное состояние для анимации */
+    transform: translateY(20px);
+    animation: cardFadeIn 0.8s ease forwards;
+  }
+  
+  @keyframes cardFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .artist-card:hover {
+    transform: translateY(-10px) scale(1.05); /* Поднимаем и увеличиваем карточку */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* Тень при наведении */
+  }
+  
+  .image-container {
     width: 100%;
     height: 100%;
     overflow: hidden;
-}
-
-.artist-photo {
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .artist-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.artist-name {
+    transition: transform 0.5s ease;
+  }
+  
+  .artist-card:hover .artist-photo {
+    transform: scale(1.1); /* Увеличиваем изображение при наведении */
+  }
+  
+  .artist-name {
     font-size: 17px;
     margin-top: 10px;
     text-align: start;
     align-items: center;
     margin-left: 10px;
     margin-bottom: 10px;
-}
-
-.arrow {
+    opacity: 0; /* Начальное состояние для анимации */
+    animation: fadeIn 0.8s ease 0.7s forwards;
+  }
+  
+  .arrow {
     font-size: 1.2rem;
     color: #333;
-}
-
-.view-all-button {
+  }
+  
+  .view-all-button {
     margin: 50px auto;
     display: block;
     padding: 12px 24px;
@@ -72,9 +115,70 @@
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
-	
-}
-
-.view-all-button:hover {
+    opacity: 0; /* Начальное состояние для анимации */
+    animation: fadeIn 0.8s ease 1s forwards;
+  }
+  
+  .view-all-button:hover {
     background-color: #003366;
-} 
+  }
+  
+  /* Адаптация для планшетов */
+  @media (max-width: 1024px) {
+    .artists-section {
+      padding: 40px 10%;
+    }
+  
+    .artist-grid {
+      gap: 10vh;
+    }
+  
+    .artist-card {
+      width: 280px;
+      height: 320px;
+    }
+  }
+  
+  /* Адаптация для мобильных устройств */
+  @media (max-width: 768px) {
+    .artists-section {
+      padding: 30px 5%;
+    }
+  
+    .section-title {
+      font-size: 18px;
+    }
+  
+    .artist-grid {
+      gap: 5vh;
+    }
+  
+    .artist-card {
+      width: 240px;
+      height: 280px;
+    }
+  
+    .artist-name {
+      font-size: 16px;
+    }
+  
+    .view-all-button {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .artist-grid {
+      gap: 3vh;
+    }
+  
+    .artist-card {
+      width: 100%;
+      height: 300px;
+    }
+  
+    .artist-name {
+      font-size: 15px;
+    }
+  }

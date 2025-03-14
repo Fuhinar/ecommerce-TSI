@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Добавьте useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import logo from './logo.png';
 import { FaShoppingCart, FaSearch, FaUser, FaTimes, FaPlus, FaMinus } from 'react-icons/fa';
-import { CartContext } from '../../context/CartContext'; // Исправьте путь
+import { CartContext } from '../../context/CartContext';
 import './Header.css';
 
 
@@ -72,7 +72,7 @@ export default function Header() {
               className="user-avatar"
             />
           ) : (
-            <Link to="/login">
+            <Link to="/auth">
               <FaUser className="user-login-icon" />
             </Link>
           )}

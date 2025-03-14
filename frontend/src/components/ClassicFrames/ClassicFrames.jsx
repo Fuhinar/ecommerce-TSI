@@ -1,7 +1,15 @@
 import React from "react";
 import "./ClassicFrames.css";
+import { useNavigate } from "react-router-dom";
 
 export default function ClassicFrames({ products = [] }) {
+
+  const navigate = useNavigate();
+
+  const handleCardClick = (id) => {
+    navigate(`/artpersonalpage/${id}`);
+  };
+
   return (
     <div className="classic-frames-page">
       <div className="classic-frames-header">
@@ -16,13 +24,14 @@ export default function ClassicFrames({ products = [] }) {
 
       <div className="classic-frames-grid">
         {products.map((item, index) => (
-          <div key={index} className="classic-frames-card">
+          <div key={index} 
+          className="classic-canvas-card"
+          onClick={() => handleCardClick(item.id)}>
             <div className="image-container">
               <img src={item.image} alt={item.name} className="classic-frames-image" />
             </div>
             <div className="classic-frames-info">
-              <p className="artist-name">Имя художника: {item.artist}</p>
-              <p className="topic">Тема: {item.topic}</p>
+              <p className="topic">{item.title}</p>
               <p className="price">Цена: {item.price} Сом</p>
             </div>
           </div>

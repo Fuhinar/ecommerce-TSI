@@ -7,7 +7,7 @@ class Product(models.Model):
         ('hoodie', 'Толстовка'),
         ('sweatshirt', 'Свитшот'),
         ('painting', 'Картина'),
-        ('t-shirt', 'Футболка'),
+        ('tshirt', 'Футболка'),
         ('pazzle', 'Пазл'),
         ('shopper', 'Шоппер'),
     ]

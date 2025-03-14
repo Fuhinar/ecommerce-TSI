@@ -1,0 +1,128 @@
+.auth-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #f9f9f9, #e8e8e8);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.auth-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  color: #333;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.auth-container input {
+  padding: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+.auth-container input::placeholder {
+  color: #999;
+}
+
+.auth-container input:focus {
+  border-color: #161616;
+  box-shadow: 0 0 8px rgba(43, 43, 43, 0.3);
+  outline: none;
+  background: rgba(255, 255, 255, 1);
+}
+
+.auth-container button {
+  padding: 0.9rem;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.auth-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.auth-container button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(39, 39, 39, 0.2);
+}
+
+.error-message {
+  color: #ff4d4d;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: rgba(255, 77, 77, 0.1);
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid rgba(46, 46, 46, 0.2);
+}
+
+.toggle-auth {
+  color: #2575fc;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #00a2ff, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.toggle-auth:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 1.5rem;
+    margin: 20px auto;
+  }
+
+  .auth-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .auth-container input,
+  .auth-container button {
+    font-size: 0.95rem;
+  }
+}

@@ -3,6 +3,19 @@
   padding: 60px 10%;
   max-width: 1600px;
   margin: 0 auto;
+  opacity: 0; /* Начальное состояние для анимации */
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .classic-frames-page .classic-frames-header {
@@ -17,6 +30,18 @@
   margin-bottom: 25px;
   position: relative;
   display: inline-block;
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .classic-frames-page .classic-frames-header h1::after {
@@ -27,6 +52,16 @@
   width: 60px;
   height: 3px;
   background-color: #003366;
+  animation: expandLine 0.8s ease-out 0.5s forwards;
+}
+
+@keyframes expandLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60px;
+  }
 }
 
 .classic-frames-page .classic-frames-header p {
@@ -34,6 +69,9 @@
   color: #555;
   margin-bottom: 20px;
   line-height: 1.8;
+  width: 100%;
+  animation: fadeIn 1s ease 0.8s forwards;
+  opacity: 0;
 }
 
 .classic-frames-page .classic-frames-grid {
@@ -53,6 +91,21 @@
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardFadeIn 0.8s ease forwards;
+  
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .classic-frames-page .classic-frames-card:hover {
@@ -70,6 +123,7 @@
   align-items: center;
   border-radius: 8px;
   margin-bottom: 15px;
+  position: relative;
 }
 
 .classic-frames-page .classic-frames-image {
@@ -98,12 +152,16 @@
   font-weight: 500;
   color: #333;
   margin-bottom: 10px;
+  animation: fadeIn 0.8s ease 0.5s forwards;
+  opacity: 0;
 }
 
 .classic-frames-page .topic {
   font-size: 0.95rem;
   color: #666;
   margin-bottom: 15px;
+  animation: fadeIn 0.8s ease 0.7s forwards;
+  opacity: 0;
 }
 
 .classic-frames-page .price {
@@ -111,6 +169,8 @@
   color: #003366;
   font-weight: 500;
   margin-top: auto;
+  animation: fadeIn 0.8s ease 0.9s forwards;
+  opacity: 0;
 }
 
 .classic-frames-page .pagination {
@@ -129,9 +189,78 @@
   font-size: 0.95rem;
   border-radius: 6px;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 1s forwards;
 }
 
 .classic-frames-page .pagination-button:hover {
   background-color: #333;
   transform: translateY(-3px);
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
+  .classic-frames-page {
+    padding: 40px 5%;
+  }
+
+  .classic-frames-page .classic-frames-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .classic-frames-page .classic-frames-header p {
+    font-size: 1rem;
+  }
+
+  .classic-frames-page .classic-frames-grid {
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .classic-frames-page .classic-frames-grid .image-container {
+    height: 180px;
+  }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .classic-frames-page {
+    padding: 30px 5%;
+  }
+
+  .classic-frames-page .classic-frames-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .classic-frames-page .classic-frames-header p {
+    font-size: 0.95rem;
+  }
+
+  .classic-frames-page .classic-frames-grid {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .classic-frames-page .classic-frames-grid .image-container {
+    height: 150px;
+  }
+
+  .classic-frames-page .pagination-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .classic-frames-page .classic-frames-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .classic-frames-page .classic-frames-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .classic-frames-page .classic-frames-header p {
+    font-size: 0.9rem;
+  }
 }

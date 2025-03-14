@@ -3,13 +3,25 @@
   padding: 60px 10%;
   max-width: 1600px;
   margin: 0 auto;
+  opacity: 0; /* Начальное состояние для анимации */
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .framed-canvas-page .framed-canvas-header {
   text-align: left;
   margin-bottom: 50px;
   max-width: 800px;
-  justify-content: center;
 }
 
 .framed-canvas-page .framed-canvas-header h1 {
@@ -18,6 +30,18 @@
   margin-bottom: 25px;
   position: relative;
   display: inline-block;
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .framed-canvas-page .framed-canvas-header h1::after {
@@ -28,13 +52,26 @@
   width: 60px;
   height: 3px;
   background-color: #003366;
+  animation: expandLine 0.8s ease-out 0.5s forwards;
+}
+
+@keyframes expandLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60px;
+  }
 }
 
 .framed-canvas-page .framed-canvas-header p {
   font-size: 1.125rem;
-  color: #666;
+  color: #555;
+  margin-bottom: 20px;
   line-height: 1.8;
-  margin-bottom: 15px;
+  width: 100%;
+  animation: fadeIn 1s ease 0.8s forwards;
+  opacity: 0;
 }
 
 .framed-canvas-page .framed-canvas-grid {
@@ -54,6 +91,20 @@
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardFadeIn 0.8s ease forwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .framed-canvas-page .framed-canvas-card:hover {
@@ -65,18 +116,20 @@
   width: 100%;
   height: 220px;
   background-color: #f8f8f8;
-  border-radius: 8px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
   margin-bottom: 15px;
+  position: relative;
 }
 
 .framed-canvas-page .framed-canvas-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.5s ease;
 }
 
@@ -85,32 +138,38 @@
 }
 
 .framed-canvas-page .framed-canvas-info {
-  margin-top: 15px;
-  padding: 10px;
+  padding: 15px 10px;
+  text-align: center;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.framed-canvas-page .framed-canvas-info .artist-name {
+.framed-canvas-page .artist-name {
   font-size: 1.1rem;
-  color: #333;
-  margin-bottom: 8px;
   font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+  animation: fadeIn 0.8s ease 0.5s forwards;
+  opacity: 0;
 }
 
-.framed-canvas-page .framed-canvas-info .topic {
+.framed-canvas-page .topic {
   font-size: 0.95rem;
   color: #666;
   margin-bottom: 15px;
+  animation: fadeIn 0.8s ease 0.7s forwards;
+  opacity: 0;
 }
 
-.framed-canvas-page .framed-canvas-info .price {
+.framed-canvas-page .price {
   font-size: 1.1rem;
   color: #003366;
   font-weight: 500;
   margin-top: auto;
+  animation: fadeIn 0.8s ease 0.9s forwards;
+  opacity: 0;
 }
 
 .framed-canvas-page .pagination {
@@ -120,18 +179,87 @@
 }
 
 .framed-canvas-page .pagination-button {
-  font-size: 1rem;
-  padding: 12px 25px;
-  margin: 0 8px;
   background-color: #000;
   color: #fff;
   border: none;
-  border-radius: 6px;
+  padding: 12px 25px;
+  margin: 0 8px;
   cursor: pointer;
+  font-size: 0.95rem;
+  border-radius: 6px;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 1s forwards;
 }
 
 .framed-canvas-page .pagination-button:hover {
   background-color: #333;
   transform: translateY(-3px);
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
+  .framed-canvas-page {
+    padding: 40px 5%;
+  }
+
+  .framed-canvas-page .framed-canvas-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .framed-canvas-page .framed-canvas-header p {
+    font-size: 1rem;
+  }
+
+  .framed-canvas-page .framed-canvas-grid {
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .framed-canvas-page .framed-canvas-grid .image-container {
+    height: 180px;
+  }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .framed-canvas-page {
+    padding: 30px 5%;
+  }
+
+  .framed-canvas-page .framed-canvas-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .framed-canvas-page .framed-canvas-header p {
+    font-size: 0.95rem;
+  }
+
+  .framed-canvas-page .framed-canvas-grid {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .framed-canvas-page .framed-canvas-grid .image-container {
+    height: 150px;
+  }
+
+  .framed-canvas-page .pagination-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .framed-canvas-page .framed-canvas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .framed-canvas-page .framed-canvas-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .framed-canvas-page .framed-canvas-header p {
+    font-size: 0.9rem;
+  }
 }

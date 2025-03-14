@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import './index.css';
@@ -11,152 +11,171 @@ import ArtistSection from './components/ArtistSection/ArtistSection';
 import ArtistsWorksSection from './components/ArtistsWorksSection/ArtistsWorksSection';
 import Artists from './components/Artists/Artists';
 import ArtistsText from './components/ArtistsText/ArtistsText';
-import ArtistPersonalPage from './components/ArtistPersonalPage/ArtistPersonalPage';
-import ArtPersonalPage from './components/ArtPersonalPage/ArtPersonalPage';
-import FramedCanvas from "./components/FramedCanvas/FramedCanvas";
-import ClassicFrames from "./components/ClassicFrames/ClassicFrames";
-import Events from "./components/Events/Events";
-import TermsOfUse from "./components/TermsofUse/TermsofUse";
-import AboutUs from "./components/AboutUs/AboutUs";
-import CartPage from "./components/CartPage/CartPage"; // Добавьте этот импорт
 import { CartProvider } from './context/CartContext';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'; // Компонент для отображения загрузки
+
+// Ленивая загрузка компонентов
+const ArtistPersonalPage = React.lazy(() => import('./components/ArtistPersonalPage/ArtistPersonalPage'));
+const ArtPersonalPage = React.lazy(() => import('./components/ArtPersonalPage/ArtPersonalPage'));
+const FramedCanvas = React.lazy(() => import('./components/FramedCanvas/FramedCanvas'));
+const ClassicFrames = React.lazy(() => import('./components/ClassicFrames/ClassicFrames'));
+const Events = React.lazy(() => import('./components/Events/Events'));
+const TermsOfUse = React.lazy(() => import('./components/TermsofUse/TermsofUse'));
+const AboutUs = React.lazy(() => import('./components/AboutUs/AboutUs'));
+const CartPage = React.lazy(() => import('./components/CartPage/CartPage'));
+const Auth = React.lazy(() => import('./components/AuthPage/AuthPage')); // Добавляем компонент Auth
 
 function App() {
-  // Состояния для данных из API
   const [artists, setArtists] = useState([]);
   const [eventsData, setEventsData] = useState([]);
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Функция для загрузки данных
+  const fetchData = async (url, setData) => {
+    try {
+      const response = await axios.get(url);
+      setData(response.data);
+    } catch (err) {
+      console.error(`Ошибка при загрузке данных с ${url}:`, err);
+      setError(err.message);
+    }
+  };
 
   useEffect(() => {
-    // Получение данных артистов
-    axios.get('/api/artists/')
-      .then(response => {
-        setArtists(response.data);
-      })
-      .catch(error => {
-        console.error("Ошибка при загрузке данных артистов", error);
-      });
+    const loadData = async () => {
+      setLoading(true);
+      setError(null);
 
-    // Получение данных событий
-    axios.get('/api/events/')
-      .then(response => {
-        setEventsData(response.data);
-      })
-      .catch(error => {
-        console.error("Ошибка при загрузке данных событий", error);
-      });
+      try {
+        await Promise.all([
+          fetchData('/api/artists/', setArtists),
+          fetchData('/api/events/', setEventsData),
+          fetchData('/api/products/', setProducts),
+        ]);
+      } catch (err) {
+        setError("Ошибка при загрузке данных. Пожалуйста, попробуйте позже.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    // Получение данных товаров
-    axios.get('/api/products/')
-      .then(response => {
-        setProducts(response.data);
-      })
-      .catch(error => {
-        console.error("Ошибка при загрузке данных товаров", error);
-      });
+    loadData();
   }, []);
 
-  // Фильтруем товары по категориям, если в product есть поле category
+  // Фильтруем товары по категориям
   const framedItems = products.filter(p => p.category === 'painting');
   const classicItems = products.filter(p => p.category !== 'painting');
+
+  // Если данные загружаются, показываем спиннер
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
 
   return (
     <CartProvider>
       <Router>
         <Header />
-        <Routes>
-          {/* Главная страница */}
-          <Route
-            path="/"
-            element={
-              <>
-                <TextSection />
-                <ArtistSection artists={artists} />
-                <ArtistsWorksSection products={products} />
-                <FooterLogo />
-                <Footer />
-              </>
-            }
-          />
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            {/* Главная страница */}
+            <Route
+              path="/"
+              element={
+                <>
+                  <TextSection />
+                  <ArtistSection artists={artists} />
+                  <ArtistsWorksSection products={products} />
+                  <FooterLogo />
+                  <Footer />
+                </>
+              }
+            />
 
-          {/* Страница со всеми художниками */}
-          <Route
-            path="/artist"
-            element={
-              <>
-                <Artists ArtistsPage={artists} />
-                <ArtistsText />
-                <FooterLogo />
-                <Footer />
-              </>
-            }
-          />
+            {/* Страница со всеми художниками */}
+            <Route
+              path="/artist"
+              element={
+                <>
+                  <Artists ArtistsPage={artists} />
+                  <ArtistsText />
+                  <FooterLogo />
+                  <Footer />
+                </>
+              }
+            />
 
-          {/* Страница корзины */}
-          <Route path="/cart" element={<CartPage />} />
+            {/* Страница корзины */}
+            <Route path="/cart" element={<CartPage />} />
 
-          {/* Страница одного художника */}
-          <Route
-            path="/artistpersonalpage/:artistId"
-            element={
-              <>
-                <ArtistPersonalPage ArtistInfoPage={artists} works={products} />
-                <FooterLogo />
-                <Footer />
-              </>
-            }
-          />
+            {/* Страница одного художника */}
+            <Route
+              path="/artistpersonalpage/:artistId"
+              element={
+                <>
+                  <ArtistPersonalPage ArtistInfoPage={artists} works={products} />
+                  <FooterLogo />
+                  <Footer />
+                </>
+              }
+            />
 
-          {/* Страница одной работы */}
-          <Route
-            path="/artpersonalpage/:workId"
-            element={
-              <>
-                <ArtPersonalPage works={products} artists={artists} />
-                <FooterLogo />
-                <Footer />
-              </>
-            }
-          />
+            {/* Страница одной работы */}
+            <Route
+              path="/artpersonalpage/:workId"
+              element={
+                <>
+                  <ArtPersonalPage works={products} artists={artists} />
+                  <FooterLogo />
+                  <Footer />
+                </>
+              }
+            />
 
-          {/* Страница с рамками, фильтруем по категориям */}
-          <Route
-            path="/framed-canvas"
-            element={<FramedCanvas products={framedItems} />}
-          />
-          <Route
-            path="/classic-frames"
-            element={<ClassicFrames products={classicItems} />}
-          />
+            {/* Страница с рамками */}
+            <Route
+              path="/framed-canvas"
+              element={<FramedCanvas products={framedItems} />}
+            />
+            <Route
+              path="/classic-frames"
+              element={<ClassicFrames products={classicItems} />}
+            />
 
-          {/* Страница событий */}
-          <Route
-            path="/events"
-            element={<Events events={eventsData} />}
-          />
+            {/* Страница событий */}
+            <Route
+              path="/events"
+              element={<Events events={eventsData} />}
+            />
 
-          {/* Страница условий использования */}
-          <Route
-            path="/terms"
-            element={
-              <>
-                <TermsOfUse />
-                <Footer />
-              </>
-            }
-          />
+            {/* Страница условий использования */}
+            <Route
+              path="/terms"
+              element={
+                <>
+                  <TermsOfUse />
+                  <Footer />
+                </>
+              }
+            />
 
-          {/* Страница "О нас" */}
-          <Route
-            path="/about"
-            element={
-              <>
-                <AboutUs />
-                <Footer />
-              </>
-            }
-          />
-        </Routes>
+            {/* Страница "О нас" */}
+            <Route
+              path="/about"
+              element={
+                <>
+                  <AboutUs />
+                  <Footer />
+                </>
+              }
+            />
+
+            {/* Страница авторизации и регистрации */}
+            <Route path="/auth" element={<Auth />} />
+          </Routes>
+        </Suspense>
       </Router>
     </CartProvider>
   );

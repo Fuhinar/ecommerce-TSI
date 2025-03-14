@@ -292,7 +292,7 @@
   }
 
   .artist-personal-page .works-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .artist-personal-page .subscribe h2 {
@@ -301,6 +301,11 @@
 
   .artist-personal-page .subscribe p {
     font-size: 1rem;
+  }
+
+  .artist-personal-page .work-image {
+    width: 300px;
+    height: auto;
   }
 }
 
@@ -339,5 +344,10 @@
 
   .artist-personal-page .subscribe input {
     min-width: 100%;
+  }
+
+  .artist-personal-page .work-image {
+    width: 200px;
+    height: auto;
   }
 }

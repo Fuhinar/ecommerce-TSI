@@ -153,6 +153,32 @@
   box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
 }
 
+.variant-selector {
+  margin-bottom: 20px;
+}
+
+.gallery-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+  border: 2px solid #ccc;
+  padding: 5px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.gallery-item.selected {
+  border-color: #007bff;
+}
+
+.gallery-item img {
+  width: 100px;
+  height: auto;
+}
+
 @media screen and (max-width: 768px) {
   .art-personal-page .art-header-container {
     flex-direction: column;

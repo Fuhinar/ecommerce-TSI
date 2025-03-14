@@ -13,6 +13,28 @@ body {
   overflow-x: hidden;
 }
 
+.logo-selector {
+  text-align: center;
+}
+
+.preview img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.options button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.options button.active {
+  background-color: #000;
+  color: #fff;
+}
+
 
 
 
@@ -244,6 +266,8 @@ body {
     width: 300px;
     height: auto;
 }
+
+  
 
 }
 

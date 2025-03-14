@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='category',
-            field=models.CharField(choices=[('scarf', 'Платок'), ('hoodie', 'Толстовка'), ('sweatshirt', 'Свитшот'), ('painting', 'Картина'), ('t-shirt', 'Футболка'), ('pazzle', 'Пазл'), ('shopper', 'Шоппер')], default=1, max_length=50),
+            field=models.CharField(choices=[('scarf', 'Платок'), ('hoodie', 'Толстовка'), ('sweatshirt', 'Свитшот'), ('painting', 'Картина'), ('tshirt', 'Футболка'), ('pazzle', 'Пазл'), ('shopper', 'Шоппер')], default=1, max_length=50),
             preserve_default=False,
         ),
         migrations.AlterField(
