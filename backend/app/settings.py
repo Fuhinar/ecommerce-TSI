@@ -58,8 +58,12 @@ INSTALLED_APPS = [
     'users',
     'artists',
     'events',
+
+    'admin_interface',
+    'colorfield',
 ]
 
+OPENAI_API_KEY = "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"
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

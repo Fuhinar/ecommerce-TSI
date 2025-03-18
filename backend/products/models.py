@@ -10,6 +10,7 @@ class Product(models.Model):
         ('tshirt', 'Футболка'),
         ('pazzle', 'Пазл'),
         ('shopper', 'Шоппер'),
+        ('caps', 'Кепка'),
     ]
 
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)

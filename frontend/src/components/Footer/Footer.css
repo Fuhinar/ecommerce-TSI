@@ -78,6 +78,7 @@ label[for="country"] {
     justify-content: center; 
     gap: 20px; 
     background-color: transparent;
+    margin-top: 10px;
 }
 
 .social-icon {

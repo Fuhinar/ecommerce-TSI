@@ -32,7 +32,7 @@ export default function FramedCanvas({ products = [] }) {
               <img src={item.image} alt={item.title} className="framed-canvas-image" />
             </div>
             <div className="framed-canvas-info">
-              <p className="description">{item.description}</p>
+              <p className="description">{item.title}</p>
               <p className="price">Цена: {item.price} Сом</p>
             </div>
           </div>
