@@ -12,7 +12,11 @@ import ArtistsWorksSection from './components/ArtistsWorksSection/ArtistsWorksSe
 import Artists from './components/Artists/Artists';
 import ArtistsText from './components/ArtistsText/ArtistsText';
 import { CartProvider } from './context/CartContext';
-import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'; // Компонент для отображения загрузки
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
+import { AuthProvider } from './context/AuthContext';
+import SearchPage from './components/SearchPage/SearchPage';
+
+
 
 // Ленивая загрузка компонентов
 const ArtistPersonalPage = React.lazy(() => import('./components/ArtistPersonalPage/ArtistPersonalPage'));
@@ -23,7 +27,9 @@ const Events = React.lazy(() => import('./components/Events/Events'));
 const TermsOfUse = React.lazy(() => import('./components/TermsofUse/TermsofUse'));
 const AboutUs = React.lazy(() => import('./components/AboutUs/AboutUs'));
 const CartPage = React.lazy(() => import('./components/CartPage/CartPage'));
-const Auth = React.lazy(() => import('./components/AuthPage/AuthPage')); // Добавляем компонент Auth
+const Auth = React.lazy(() => import('./components/AuthPage/AuthPage'));
+const AccountPage = React.lazy(() => import('./components/AccountPage/AccountPage'));
+
 
 function App() {
   const [artists, setArtists] = useState([]);
@@ -51,7 +57,6 @@ function App() {
       try {
         await Promise.all([
           fetchData('/api/artists/', setArtists),
-          fetchData('/api/events/', setEventsData),
           fetchData('/api/products/', setProducts),
         ]);
       } catch (err) {
@@ -75,109 +80,128 @@ function App() {
 
 
   return (
-    <CartProvider>
-      <Router>
-        <Header />
-        <Suspense fallback={<LoadingSpinner />}>
-          <Routes>
-            {/* Главная страница */}
-            <Route
-              path="/"
-              element={
-                <>
-                  <TextSection />
-                  <ArtistSection artists={artists} />
-                  <ArtistsWorksSection products={products} />
-                  <FooterLogo />
-                  <Footer />
-                </>
-              }
-            />
+    <AuthProvider>
+      <CartProvider>
+        <Router>
+          <Header />
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              {/* Главная страница */}
+              <Route
+                path="/"
+                element={
+                  <>
+                    <TextSection />
+                    <ArtistSection artists={artists} />
+                    <ArtistsWorksSection products={products} />
+                    <FooterLogo />
+                    <Footer />
+                  </>
+                }
+              />
 
-            {/* Страница со всеми художниками */}
-            <Route
-              path="/artist"
-              element={
-                <>
-                  <Artists ArtistsPage={artists} />
-                  <ArtistsText />
-                  <FooterLogo />
-                  <Footer />
-                </>
-              }
-            />
+              {/* Страница со всеми художниками */}
+              <Route
+                path="/artist"
+                element={
+                  <>
+                    <Artists ArtistsPage={artists} />
+                    <ArtistsText />
+                    <FooterLogo />
+                    <Footer />
+                  </>
+                }
+              />
 
-            {/* Страница корзины */}
-            <Route path="/cart" element={<CartPage />} />
+              {/* Страница корзины */}
+              <Route path="/cart" element={<CartPage />} />
 
-            {/* Страница одного художника */}
-            <Route
-              path="/artistpersonalpage/:artistId"
-              element={
-                <>
-                  <ArtistPersonalPage ArtistInfoPage={artists} works={products} />
-                  <FooterLogo />
-                  <Footer />
-                </>
-              }
-            />
+              {/* Страница одного художника */}
+              <Route
+                path="/artistpersonalpage/:artistId"
+                element={
+                  <>
+                    <ArtistPersonalPage ArtistInfoPage={artists} works={products} />
+                    <FooterLogo />
+                    <Footer />
+                  </>
+                }
+              />
 
-            {/* Страница одной работы */}
-            <Route
-              path="/artpersonalpage/:workId"
-              element={
-                <>
-                  <ArtPersonalPage works={products} artists={artists} />
-                  <FooterLogo />
-                  <Footer />
-                </>
-              }
-            />
+              <Route
+                path="/account"
+                element={
+                  <>
+                    <AccountPage />
+                    <Footer />
+                  </>
+                }
+              />
 
-            {/* Страница с рамками */}
-            <Route
-              path="/framed-canvas"
-              element={<FramedCanvas products={framedItems} />}
-            />
-            <Route
-              path="/classic-frames"
-              element={<ClassicFrames products={classicItems} />}
-            />
+              <Route 
+                path="/search" 
+                element={
+                  <SearchPage />
+                } 
+              />
 
-            {/* Страница событий */}
-            <Route
-              path="/events"
-              element={<Events events={eventsData} />}
-            />
+              {/* Страница одной работы */}
+              <Route
+                path="/artpersonalpage/:workId"
+                element={
+                  <>
+                    <ArtPersonalPage works={products} artists={artists} />
+                    <FooterLogo />
+                    <Footer />
+                  </>
+                }
+              />
 
-            {/* Страница условий использования */}
-            <Route
-              path="/terms"
-              element={
-                <>
-                  <TermsOfUse />
-                  <Footer />
-                </>
-              }
-            />
+              {/* Страница с рамками */}
+              <Route
+                path="/framed-canvas"
+                element={<FramedCanvas products={framedItems} />}
+              />
+              <Route
+                path="/classic-frames"
+                element={<ClassicFrames products={classicItems} />}
+              />
 
-            {/* Страница "О нас" */}
-            <Route
-              path="/about"
-              element={
-                <>
-                  <AboutUs />
-                  <Footer />
-                </>
-              }
-            />
+              {/* Страница событий */}
+              <Route
+                path="/events"
+                element={<Events events={eventsData} />}
+              />
 
-            {/* Страница авторизации и регистрации */}
-            <Route path="/auth" element={<Auth />} />
-          </Routes>
-        </Suspense>
-      </Router>
-    </CartProvider>
+              {/* Страница условий использования */}
+              <Route
+                path="/terms"
+                element={
+                  <>
+                    <TermsOfUse />
+                    <Footer />
+                  </>
+                }
+              />
+
+              {/* Страница "О нас" */}
+              <Route
+                path="/about"
+                element={
+                  <>
+                    <AboutUs />
+                    <Footer />
+                  </>
+                }
+              />
+
+              {/* Страница авторизации и регистрации */}
+              <Route path="/auth" element={<Auth />} />
+            </Routes>
+          </Suspense>
+        </Router>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 

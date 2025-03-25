@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,13 +31,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'  # SMTP-сервер
-# EMAIL_PORT = 587  # Порт для TLS
-# EMAIL_USE_TLS = True  # Использовать TLS
-# EMAIL_HOST_USER = 'weaveart.kg@gmail.com'  # Ваш email
-# EMAIL_HOST_PASSWORD = 'Ghuas1423!'  # Пароль от email
-# DEFAULT_FROM_EMAIL = 'weaveart.kg@gmail.com'  # Email отправителя
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587 
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'weaveart.kg@gmail.com'
+EMAIL_HOST_PASSWORD = 'Ghuas1423!'
 
 
 # Application definition
@@ -167,3 +167,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
+
+
+from decouple import config
+
+FREEDOMPAY_MERCHANT_ID = config("FREEDOMPAY_MERCHANT_ID")
+FREEDOMPAY_SECRET_KEY = config("FREEDOMPAY_SECRET_KEY")
+FREEDOMPAY_CHECK_URL = config("FREEDOMPAY_CHECK_URL")
+FREEDOMPAY_RESULT_URL = config("FREEDOMPAY_RESULT_URL")
+FREEDOMPAY_SUCCESS_URL = config("FREEDOMPAY_SUCCESS_URL")
+FREEDOMPAY_FAILURE_URL = config("FREEDOMPAY_FAILURE_URL")

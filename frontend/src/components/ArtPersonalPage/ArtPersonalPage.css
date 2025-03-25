@@ -1,204 +1,243 @@
-/* ================================= Art Personal Page ================================= */
-.art-personal-page {
-  margin: 0 auto;
+.product-page {
+  background-color: #f9f9f9;
+  padding: 20px;
   max-width: 1200px;
-  padding: 40px 20px;
-  color: #333;
+  margin: 0 auto;
 }
 
-.art-personal-page .art-header-container {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-  margin-top: 10vh;
-  flex-wrap: wrap;
-}
-
-.art-personal-page .art-image-large {
-  min-width: 400px;
-  max-width: 540px;
-  min-height: 400px;
-  max-height: 500px;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
-  object-fit: cover;
-}
-
-.art-personal-page .art-image-large:hover {
-  transform: scale(1.02);
-}
-
-.art-personal-page .artist-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 25px;
-  flex: 1;
-  min-width: 300px;
-}
-
-.art-personal-page .artist-info .artist-name {
-  margin-bottom: 10px;
-}
-
-.art-personal-page .artist-info .artist-name h2 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.art-personal-page .artist-info .artist-name p {
-  color: #7c7c7c;
-  text-decoration: underline;
-  font-weight: normal;
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-.art-personal-page .artist-photo {
-  width: 326px;
-  height: 352px;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.art-personal-page .artist-photo:hover {
-  transform: translateY(-5px);
-}
-
-.art-personal-page .art-price p {
-  margin: 20px 0;
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #000;
-}
-
-.art-personal-page .art-options {
-  border-top: 1px solid #eee;
-  padding-top: 25px;
-  width: 100%;
-}
-
-.art-personal-page .options-container {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+.product-page__card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  padding: 30px;
   margin-bottom: 30px;
 }
 
-.art-personal-page .size-selector,
-.art-personal-page .quantity-selector {
+.product-page__top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.product-page__images {
+  flex: 1 1 400px; 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-page__main-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.product-page__main-image:hover {
+  transform: scale(1.02);
+}
+
+.product-page__logo-preview {
+  text-align: center;
+}
+
+.product-page__logo-image {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-page__logo-label {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.product-page__info {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-page__title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+}
+
+.product-page__artist {
+  color: #555;
+  font-size: 1rem;
+}
+
+.artist-link {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.artist-link:hover {
+  color: #0056b3;
+}
+
+.product-page__price {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.product-page__options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-page__option {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: flex-start;
 }
 
-.art-personal-page .size-selector label,
-.art-personal-page .quantity-selector label {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 5px;
-}
-
-.art-personal-page .quantity-selector input {
-  width: 80px;
-  text-align: center;
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-}
-
-.art-personal-page .add-to-cart {
-  background-color: #000;
-  color: #fff;
-  padding: 15px 25px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 25px;
-  font-size: 1.1rem;
-  width: 100%;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.art-personal-page .add-to-cart:hover {
-  background-color: #333;
-  transform: translateY(-3px);
-}
-
-.art-personal-page .size-selector select,
-.art-personal-page .quantity-selector input {
-  background-color: #fff;
-  color: #333;
-  padding: 12px 20px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.art-personal-page .size-selector select:hover,
-.art-personal-page .quantity-selector input:hover {
-  border-color: #999;
-}
-
-.art-personal-page .size-selector select:focus,
-.art-personal-page .quantity-selector input:focus {
-  outline: none;
-  border-color: #003366;
-  box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
-}
-
-.variant-selector {
-  margin-bottom: 20px;
-}
-
-.gallery-grid {
+/* Сетка для вариантов логотипа */
+.product-page__variants {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
-.gallery-item {
-  border: 2px solid #ccc;
-  padding: 5px;
+/* Элемент варианта логотипа */
+.product-page__variant-item {
   cursor: pointer;
-  transition: border-color 0.3s ease;
+  border: 2px solid transparent;
+  padding: 5px;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s;
 }
 
-.gallery-item.selected {
+.product-page__variant-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-page__variant-item.selected {
   border-color: #007bff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.gallery-item img {
-  width: 100px;
+.product-page__variant-item img {
+  width: 80px;
   height: auto;
 }
 
-@media screen and (max-width: 768px) {
-  .art-personal-page .art-header-container {
+/* Подпись под вариантами */
+.product-page__note {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Поле "Количество" и "Размер" */
+.product-page__option select,
+.product-page__option input[type="number"] {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  width: 80px;
+}
+
+.product-page__option select:focus,
+.product-page__option input[type="number"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Кнопка "Добавить в корзину" */
+.product-page__add-to-cart {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.product-page__add-to-cart:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Карточка с описанием ниже */
+.product-page__description {
+  margin-top: 20px;
+}
+
+/* Заголовок описания */
+.product-page__description h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Текст описания */
+.product-page__description p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.cart-notification {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #28a745;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 1rem;
+  z-index: 9999;
+  animation: fadeInOut 3s forwards; 
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-page__top {
     flex-direction: column;
-    gap: 40px;
   }
 
-  .art-personal-page .art-image-large {
-    width: 100%;
-    height: 400px;
+  .product-page__images,
+  .product-page__info {
+    flex: 1 1 auto;
   }
-
-  .art-personal-page .artist-info {
-    align-items: center;
-  }
-
-  .art-personal-page .artist-photo {
-    width: 100%;
-    height: 300px;
-  }
-  
 }

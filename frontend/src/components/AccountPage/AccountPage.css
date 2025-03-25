@@ -1,0 +1,48 @@
+/* AccountPage.css */
+
+.account-page {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .account-page h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .orders-list {
+    margin-top: 30px;
+  }
+  
+  .orders-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .orders-list li {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+  }
+  
+  .account-page {
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.orders-list {
+  list-style: none;
+  padding: 0;
+}
+
+.orders-list li {
+  background: #f9f9f9;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}

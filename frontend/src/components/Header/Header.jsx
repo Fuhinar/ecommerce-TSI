@@ -5,15 +5,16 @@ import { FaShoppingCart, FaSearch, FaUser, FaTimes, FaPlus, FaMinus } from 'reac
 import { CartContext } from '../../context/CartContext';
 import './Header.css';
 
-
 export default function Header() {
   const [cartOpen, setCartOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [userAvatar, setUserAvatar] = useState(null);
 
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useContext(CartContext);
-  const navigate = useNavigate(); // Хук для навигации
+  const navigate = useNavigate();
 
   const toggleCart = () => {
     setCartOpen((prev) => !prev);
@@ -23,17 +24,32 @@ export default function Header() {
     setMenuOpen(!menuOpen);
   };
 
-  // Подсчет общей суммы
+  const toggleSearch = () => {
+    setSearchOpen((prev) => !prev);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchOpen(false);
+      setSearchQuery('');
+    }
+  };
+
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
-  // Оформление заказа
   const handleCheckout = () => {
-    navigate('/cart'); // Перенаправление на страницу корзины
-    setCartOpen(false); // Закрыть корзину
+    navigate('/cart');
+    setCartOpen(false);
   };
 
   return (
-    <div>
+    <div className="header-container">
       {/* Мобильное меню */}
       <div className="topbar">
         <div className={`burger-menu ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
@@ -59,18 +75,21 @@ export default function Header() {
           <Link to="/framed-canvas" className="nav-link">Картины</Link>
           <Link to="/classic-frames" className="nav-link">Мерч</Link>
           <Link to="/events" className="nav-link">События</Link>
+          <Link to="/account" className="nav-link">Личный кабинет</Link>
         </nav>
         
         {/* Кнопки справа */}
         <div className="buttons">
           <FaShoppingCart onClick={toggleCart} className={`shop-cart-button ${cartOpen ? 'active' : ''}`} />
-          <FaSearch className="search-button" />
+          <FaSearch onClick={toggleSearch} className="search-button" />
           {userLoggedIn ? (
-            <img 
-              src={userAvatar || '/path/to/default-avatar.png'}
-              alt="User Avatar"
-              className="user-avatar"
-            />
+            <Link to="/account">
+              <img 
+                src={userAvatar || '/path/to/default-avatar.png'}
+                alt="User Avatar"
+                className="user-avatar"
+              />
+            </Link>
           ) : (
             <Link to="/auth">
               <FaUser className="user-login-icon" />
@@ -78,6 +97,25 @@ export default function Header() {
           )}
         </div>
       </header>
+
+      {/* Поисковый оверлей */}
+      {searchOpen && (
+        <div className="search-overlay">
+          <form onSubmit={handleSearchSubmit} className="search-form">
+            <input 
+              type="text" 
+              value={searchQuery} 
+              onChange={handleSearchChange} 
+              placeholder="Поиск по картинам, описанию, именам детей..." 
+              className="search-input"
+            />
+            <button type="submit" className="search-submit">Искать</button>
+            <button type="button" onClick={toggleSearch} className="search-close">
+              <FaTimes />
+            </button>
+          </form>
+        </div>
+      )}
 
       {/* Корзина */}
       {cartOpen && (

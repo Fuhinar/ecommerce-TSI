@@ -52,7 +52,8 @@
   }
   
   .cart-item-image {
-    width: 80px;
+    min-width: 80px;
+    width: 130px;
     height: 80px;
     object-fit: cover;
     border-radius: 8px;
@@ -125,6 +126,58 @@
     color: #666;
     margin-top: 30px;
   }
+
+  /* Заголовок товара */
+.cart-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #001f3f;
+}
+
+/* Контейнер для кнопок оформления */
+.cart-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* Кнопка WhatsApp */
+.whatsapp-button {
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  background-color: #1ebe5d;
+  transform: translateY(-3px);
+}
+
+/* Кнопка очистки корзины */
+.clear-cart-button {
+  background-color: #888;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.clear-cart-button:hover {
+  background-color: #666;
+  transform: translateY(-3px);
+}
+
+
   
   /* Адаптивность */
   @media (max-width: 768px) {

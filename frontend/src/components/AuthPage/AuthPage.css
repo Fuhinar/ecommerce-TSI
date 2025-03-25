@@ -99,6 +99,56 @@
   opacity: 0.9;
 }
 
+.auth-container .code-input {
+  letter-spacing: 0.4rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.9rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px dashed #999;
+}
+
+.social-login {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.social-login button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.google-button {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.google-button:hover {
+  background-color: #f1f1f1;
+}
+
+.facebook-button {
+  background-color: #1877f2;
+  color: white;
+}
+
+.facebook-button:hover {
+  background-color: #145cd6;
+}
+
 @keyframes gradientBackground {
   0% {
     background-position: 0% 50%;
