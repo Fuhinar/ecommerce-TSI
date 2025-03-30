@@ -1,0 +1,15 @@
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-app
+    env_file: .env
+    networks:
+      - backend_net
+    volumes:
+      - media_volume:/backend/media
+    expose:
+      - "8000"
+    depends_on:
+      - db
+    restart: unless-stopped

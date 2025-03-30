@@ -4,7 +4,7 @@ import axios from "axios";
 import "./AuthPage.css";
 
 const Auth = () => {
-  const [isLogin, setIsLogin] = useState(true); // Переключатель между логином и регистрацией
+  const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -24,7 +24,6 @@ const Auth = () => {
     }));
   };
 
-  // Функция для отправки кода подтверждения на email
   const handleSendCode = async () => {
     setError("");
     if (!formData.email) {
@@ -33,7 +32,6 @@ const Auth = () => {
     }
     try {
       const response = await axios.post("http://localhost:8000/auth/send-code/", { email: formData.email });
-      // Если сервер вернул статус 200, считаем, что письмо успешно отправлено
       if (response.status === 200) {
         setCodeSent(true);
       } else {
@@ -51,12 +49,10 @@ const Auth = () => {
     setError("");
 
     if (!isLogin) {
-      // Проверяем совпадение паролей
       if (formData.password !== formData.password2) {
         setError("Пароли не совпадают");
         return;
       }
-      // Проверяем, что код отправлен и введён
       if (!codeSent) {
         setError("Пожалуйста, отправьте код подтверждения на почту.");
         return;
@@ -78,6 +74,7 @@ const Auth = () => {
       console.log("Отправка данных:", data);
       const response = await axios.post(url, data);
       console.log("Ответ сервера:", response.data);
+      console.log("Отправка данных:", data);
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);

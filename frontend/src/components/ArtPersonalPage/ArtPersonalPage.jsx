@@ -152,7 +152,11 @@ export default function ArtPersonalPage({ works, artists }) {
 
       <div className="product-page__card product-page__description">
         <h2>Описание</h2>
-        <p>{work.description || 'Описание отсутствует.'}</p>
+        {work.description
+          ? work.description.split('\n').map((para, idx) => (
+              <p key={idx} style={{ marginBottom: '1em' }}>{para.trim()}</p>
+            ))
+          : <p>Описание отсутствует.</p>}
       </div>
     </div>
   );

@@ -63,6 +63,7 @@ export default function Header() {
           <Link to="/framed-canvas" className="nav-link" onClick={toggleMenu}>Картины</Link>
           <Link to="/classic-frames" className="nav-link" onClick={toggleMenu}>Мерч</Link>
           <Link to="/events" className="nav-link" onClick={toggleMenu}>События</Link>
+          <Link to="/account" className="nav-link" onClick={toggleMenu}>Личный кабинет</Link>
         </div>
       </div>
 

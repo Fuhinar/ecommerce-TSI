@@ -42,7 +42,20 @@ class LoginView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
-            user = authenticate(username=serializer.validated_data['username'], password=serializer.validated_data['password'])
+            username_or_email = serializer.validated_data['username']
+            password = serializer.validated_data['password']
+
+            try:
+                if '@' in username_or_email:
+                    user_obj = User.objects.get(email=username_or_email)
+                    username = user_obj.username
+                else:
+                    username = username_or_email
+
+                user = authenticate(username=username, password=password)
+            except User.DoesNotExist:
+                user = None
+
             if user:
                 token, created = Token.objects.get_or_create(user=user)
                 return Response({'token': token.key, 'user': UserSerializer(user).data})
@@ -75,7 +88,7 @@ class SendVerificationCodeView(APIView):
             send_mail(
                 'Код подтверждения',
                 f'Ваш код подтверждения: {code}',
-                settings.EMAIL_HOST_USER,  # Замените на актуальный email отправителя
+                settings.EMAIL_HOST_USER,  
                 [email],
                 fail_silently=False,
             )

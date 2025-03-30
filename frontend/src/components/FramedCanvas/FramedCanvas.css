@@ -113,8 +113,8 @@
 }
 
 .framed-canvas-page .framed-canvas-grid .image-container {
-  width: 100%;
-  height: 220px;
+  width: 300px;
+  height: 400px;
   background-color: #f8f8f8;
   overflow: hidden;
   display: flex;
@@ -128,7 +128,7 @@
 .framed-canvas-page .framed-canvas-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.5s ease;
 }

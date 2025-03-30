@@ -24,7 +24,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         email = attrs.get('email')
         verification_code = attrs.get('verificationCode')
         try:
-            # Проверяем, что для указанного email существует запись с таким кодом
             EmailVerification.objects.get(email=email, code=verification_code)
         except EmailVerification.DoesNotExist:
             raise serializers.ValidationError({"verificationCode": "Неверный или просроченный код подтверждения."})

@@ -16,9 +16,6 @@ import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import { AuthProvider } from './context/AuthContext';
 import SearchPage from './components/SearchPage/SearchPage';
 
-
-
-// Ленивая загрузка компонентов
 const ArtistPersonalPage = React.lazy(() => import('./components/ArtistPersonalPage/ArtistPersonalPage'));
 const ArtPersonalPage = React.lazy(() => import('./components/ArtPersonalPage/ArtPersonalPage'));
 const FramedCanvas = React.lazy(() => import('./components/FramedCanvas/FramedCanvas'));
@@ -30,7 +27,6 @@ const CartPage = React.lazy(() => import('./components/CartPage/CartPage'));
 const Auth = React.lazy(() => import('./components/AuthPage/AuthPage'));
 const AccountPage = React.lazy(() => import('./components/AccountPage/AccountPage'));
 
-
 function App() {
   const [artists, setArtists] = useState([]);
   const [eventsData, setEventsData] = useState([]);
@@ -38,11 +34,19 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Функция для загрузки данных
+  // Функция для запроса данных с API
   const fetchData = async (url, setData) => {
     try {
       const response = await axios.get(url);
-      setData(response.data);
+      // Если response.data является массивом, устанавливаем его напрямую,
+      // иначе проверяем наличие поля "results" и, если оно массив, используем его.
+      if (Array.isArray(response.data)) {
+        setData(response.data);
+      } else if (response.data.results && Array.isArray(response.data.results)) {
+        setData(response.data.results);
+      } else {
+        setData([]);
+      }
     } catch (err) {
       console.error(`Ошибка при загрузке данных с ${url}:`, err);
       setError(err.message);
@@ -53,11 +57,10 @@ function App() {
     const loadData = async () => {
       setLoading(true);
       setError(null);
-
       try {
         await Promise.all([
           fetchData('/api/artists/', setArtists),
-          fetchData('/api/products/', setProducts),
+          fetchData('/api/products/', setProducts)
         ]);
       } catch (err) {
         setError("Ошибка при загрузке данных. Пожалуйста, попробуйте позже.");
@@ -69,15 +72,17 @@ function App() {
     loadData();
   }, []);
 
-  // Фильтруем товары по категориям
-  const framedItems = products.filter(p => p.category === 'painting');
-  const classicItems = products.filter(p => p.category !== 'painting');
+  // Если products не массив, то используем пустой массив, чтобы избежать ошибки
+  const framedItems = Array.isArray(products) ? products.filter(p => p.category === 'painting') : [];
+  const classicItems = Array.isArray(products) ? products.filter(p => p.category !== 'painting') : [];
 
-  // Если данные загружаются, показываем спиннер
   if (loading) {
     return <LoadingSpinner />;
   }
 
+  if (error) {
+    return <div>Ошибка: {error}</div>;
+  }
 
   return (
     <AuthProvider>
@@ -86,7 +91,6 @@ function App() {
           <Header />
           <Suspense fallback={<LoadingSpinner />}>
             <Routes>
-              {/* Главная страница */}
               <Route
                 path="/"
                 element={
@@ -99,8 +103,6 @@ function App() {
                   </>
                 }
               />
-
-              {/* Страница со всеми художниками */}
               <Route
                 path="/artist"
                 element={
@@ -112,11 +114,7 @@ function App() {
                   </>
                 }
               />
-
-              {/* Страница корзины */}
               <Route path="/cart" element={<CartPage />} />
-
-              {/* Страница одного художника */}
               <Route
                 path="/artistpersonalpage/:artistId"
                 element={
@@ -127,7 +125,6 @@ function App() {
                   </>
                 }
               />
-
               <Route
                 path="/account"
                 element={
@@ -137,15 +134,7 @@ function App() {
                   </>
                 }
               />
-
-              <Route 
-                path="/search" 
-                element={
-                  <SearchPage />
-                } 
-              />
-
-              {/* Страница одной работы */}
+              <Route path="/search" element={<SearchPage />} />
               <Route
                 path="/artpersonalpage/:workId"
                 element={
@@ -156,8 +145,6 @@ function App() {
                   </>
                 }
               />
-
-              {/* Страница с рамками */}
               <Route
                 path="/framed-canvas"
                 element={<FramedCanvas products={framedItems} />}
@@ -166,14 +153,10 @@ function App() {
                 path="/classic-frames"
                 element={<ClassicFrames products={classicItems} />}
               />
-
-              {/* Страница событий */}
               <Route
                 path="/events"
                 element={<Events events={eventsData} />}
               />
-
-              {/* Страница условий использования */}
               <Route
                 path="/terms"
                 element={
@@ -183,8 +166,6 @@ function App() {
                   </>
                 }
               />
-
-              {/* Страница "О нас" */}
               <Route
                 path="/about"
                 element={
@@ -194,8 +175,6 @@ function App() {
                   </>
                 }
               />
-
-              {/* Страница авторизации и регистрации */}
               <Route path="/auth" element={<Auth />} />
             </Routes>
           </Suspense>

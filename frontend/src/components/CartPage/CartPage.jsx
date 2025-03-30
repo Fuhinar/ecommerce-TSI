@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import './CartPage.css';
+import axios from 'axios';
+
 
 const CartPage = () => {
   const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
@@ -10,29 +12,45 @@ const CartPage = () => {
     0
   );
 
-  const handleWhatsAppCheckout = () => {
+  const handleWhatsAppCheckout = async () => {
     const phone = '996228888013';
-
-    const message = cartItems
-      .map((item, idx) => {
-        return `*Товар ${idx + 1}*
-Название: ${item.title}
-Цена: ${item.price} Сом
-Кол-во: ${item.quantity}
-${item.size ? `Размер: ${item.size}` : ''}
-${item.logoPosition ? `Локация логотипа: ${item.logoPosition}` : ''}
-`;
-      })
-      .join('\n');
-
-    const finalMessage = `Здравствуйте! Я хочу оформить заказ через сайт WeaveArt:\n\n${message}\n*Итого:* ${totalAmount.toFixed(
-      2
-    )} Сом`;
-
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
-
-    window.open(url, '_blank');
+  
+    try {
+      const orderData = {
+        items: cartItems,
+        total_price: totalAmount,
+      };
+  
+      const token = localStorage.getItem('token');
+      const response = await axios.post('/api/orders/make-order/', orderData, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+  
+      const message = cartItems
+        .map((item, idx) => {
+          return `*Товар ${idx + 1}*
+  Название: ${item.title}
+  Цена: ${item.price} Сом
+  Кол-во: ${item.quantity}
+  ${item.size ? `Размер: ${item.size}` : ''}
+  ${item.logoPosition ? `Локация логотипа: ${item.logoPosition}` : ''}`.trim();
+        })
+        .join('\n\n');
+  
+      const finalMessage = `Здравствуйте! Я хочу оформить заказ через сайт WeaveArt:\n\n${message}\n\n*Итого:* ${totalAmount.toFixed(
+        2
+      )} Сом`;
+  
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
+      window.open(url, '_blank');
+    } catch (error) {
+      console.error('Ошибка при создании заказа:', error);
+      alert('Ошибка при отправке заказа. Попробуйте снова.');
+    }
   };
+  
 
   return (
     <div className="cart-page">

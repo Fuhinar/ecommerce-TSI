@@ -10,10 +10,27 @@ const Profile = () => {
     avatar: "",
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [orders, setOrders] = useState([]);
+
 
   useEffect(() => {
     fetchProfile();
+    fetchOrders();
   }, []);
+  
+  const fetchOrders = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get("/api/orders/", {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      setOrders(response.data);
+    } catch (error) {
+      console.error("Ошибка при загрузке заказов:", error);
+    }
+  };
 
   const fetchProfile = async () => {
     try {

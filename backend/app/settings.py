@@ -11,33 +11,24 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8npk_x-%fe(y73bsr(v=38r9_w@n@(l+4j2$pwo!(p^k972p7e'
-
-# SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = config('SECRET_KEY', default='super-secret-key-for-dev')
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587 
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'weaveart.kg@gmail.com'
-EMAIL_HOST_PASSWORD = 'Ghuas1423!'
-
+ALLOWED_HOSTS = []  # для разработки можно оставить пустым или добавить ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -63,29 +54,29 @@ INSTALLED_APPS = [
     'colorfield',
 ]
 
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = config('OPENAI_API_KEY')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'django.contrib.auth.backends.ModelBackend',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # CORS should be high up
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -110,25 +101,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+# Используем переменные окружения через decouple
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ilim',      # имя базы данных
-        'USER': 'ilim',      # имя пользователя базы данных
-        'PASSWORD': 'Ghuas1423!',  # пароль
-        'HOST': 'localhost',               # адрес сервера базы данных
-        'PORT': '5432',                    # порт, по умолчанию 5432 для PostgreSQL
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', cast=int, default=5432),
     }
 }
 
-
-
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -145,35 +137,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
-
-
-# from decouple import config
-
-# FREEDOMPAY_MERCHANT_ID = config("FREEDOMPAY_MERCHANT_ID")
-# FREEDOMPAY_SECRET_KEY = config("FREEDOMPAY_SECRET_KEY")
-# FREEDOMPAY_CHECK_URL = config("FREEDOMPAY_CHECK_URL")
-# FREEDOMPAY_RESULT_URL = config("FREEDOMPAY_RESULT_URL")
-# FREEDOMPAY_SUCCESS_URL = config("FREEDOMPAY_SUCCESS_URL")
-# FREEDOMPAY_FAILURE_URL = config("FREEDOMPAY_FAILURE_URL")
