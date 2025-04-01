@@ -25,8 +25,8 @@ services:
       - backend_net
     volumes:
       - media_volume:/backend/media
-    expose:
-      - "8000"  # Make it visible to other containers
+    ports:
+      - "8000:8000"
     depends_on:
       - db
     restart: unless-stopped

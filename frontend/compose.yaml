@@ -17,6 +17,12 @@ services:
     container_name: backend-app
     env_file:
       - ./backend/.env  # либо, если один .env для всего проекта, можно указать: - .env
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=db
+      - DB_PORT=${DB_PORT}
     ports:
       - "8000:8000"
     depends_on:

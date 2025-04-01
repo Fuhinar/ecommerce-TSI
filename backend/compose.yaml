@@ -8,8 +8,14 @@
       - backend_net
     volumes:
       - media_volume:/backend/media
+      - static_volume:/backend/staticfiles
     expose:
       - "8000"
     depends_on:
       - db
     restart: unless-stopped
+    ports:
+    - "8000:8000"
+  volumes:
+    media_volume:
+    static_volume:

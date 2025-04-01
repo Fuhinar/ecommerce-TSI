@@ -4,10 +4,10 @@ set -e
 echo "Running migrations..."
 python manage.py migrate --noinput
 
-echo "Collecting static..."
+echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
-# (Опционально) создание суперпользователя
+# (Опционально) создание суперпользователя, если заданы переменные окружения
 if [ "$DJANGO_SUPERUSER_USERNAME" ] && [ "$DJANGO_SUPERUSER_PASSWORD" ]; then
   python manage.py createsuperuser \
     --noinput \
