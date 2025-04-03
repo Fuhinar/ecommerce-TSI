@@ -198,6 +198,39 @@
   transform: translateY(-3px);
 }
 
+.classic-frames-page .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.classic-frames-page .pagination-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  margin: 0 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 1s forwards;
+}
+
+.classic-frames-page .pagination-button:hover {
+  background-color: #333;
+  transform: translateY(-3px);
+}
+
+.classic-frames-page .pagination-button.active {
+  background-color: #ff6347;
+  color: #fff;
+  transform: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
 /* Адаптация для планшетов */
 @media (max-width: 1024px) {
   .classic-frames-page {

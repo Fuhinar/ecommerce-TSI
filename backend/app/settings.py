@@ -40,7 +40,7 @@ OPENAI_API_KEY = config('OPENAI_API_KEY')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Для разработки разрешаем все
+        'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'django.contrib.auth.backends.ModelBackend',

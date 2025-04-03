@@ -4,18 +4,18 @@ FROM python:3.11.9-slim
 WORKDIR /backend
 
 # Копируем зависимости и устанавливаем их
-COPY requirements.txt .
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Копируем весь исходный код проекта
 COPY . .
 
-# Если у вас есть entrypoint, копируем его и делаем исполняемым
-COPY entrypoint.sh .
+# Копируем entrypoint (если есть) и делаем его исполняемым
+COPY entrypoint.sh ./
 RUN chmod +x entrypoint.sh
 
 # Устанавливаем переменную окружения для настроек Django
 ENV DJANGO_SETTINGS_MODULE=app.settings
 
 # Запускаем приложение с помощью Gunicorn
-CMD ["gunicorn", "app.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "app.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]

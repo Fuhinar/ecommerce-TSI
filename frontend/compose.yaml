@@ -31,19 +31,28 @@ services:
       - media_volume:/backend/media
     restart: unless-stopped
 
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   container_name: frontend-app
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - backend
+  #   volumes:
+  #     - media_volume:/usr/share/nginx/html/media  # Оставляем только для media, если необходимо
+  #   restart: unless-stopped
+
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: frontend-app
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
+    image: node:18-alpine
+    working_dir: /app
     volumes:
-      - static_volume:/usr/share/nginx/html/static
-      - media_volume:/usr/share/nginx/html/media
-    restart: unless-stopped
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    command: npm start
+
 
 volumes:
   postgres_data:

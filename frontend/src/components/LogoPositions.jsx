@@ -11,14 +11,14 @@ import tshirt6 from '../merch/tshirt6.jpg';
 import tshirt7 from '../merch/tshirt7.jpg';
 import tshirt8 from '../merch/tshirt8.jpg';
 
-import sweatshirt1 from '../merch/sweatshirt1.jpg';
-import sweatshirt2 from '../merch/sweatshirt2.jpg';
-import sweatshirt3 from '../merch/sweatshirt3.jpg';
-import sweatshirt4 from '../merch/sweatshirt4.jpg';
-import sweatshirt5 from '../merch/sweatshirt5.jpg';
-import sweatshirt6 from '../merch/sweatshirt6.jpg';
-import sweatshirt7 from '../merch/sweatshirt7.jpg';
-import sweatshirt8 from '../merch/sweatshirt8.jpg';
+import sweatshirt1 from '../merch/position1.jpg';
+import sweatshirt2 from '../merch/position2.jpg';
+import sweatshirt3 from '../merch/position3.jpg';
+import sweatshirt4 from '../merch/position4.jpg';
+import sweatshirt5 from '../merch/position5.jpg';
+import sweatshirt6 from '../merch/position6.jpg';
+import sweatshirt7 from '../merch/position7.jpg';
+import sweatshirt8 from '../merch/position8.jpg';
 
 
 export const logoPositions = {
@@ -38,13 +38,13 @@ export const logoPositions = {
     { id: 8, image: tshirt8, label: 'Низ сзади' },
   ],
   sweatshirt: [
-    { id: 1, image: sweatshirt1, label: 'Центр груди' },
-    { id: 2, image: sweatshirt2, label: 'Слева на груди' },
-    { id: 3, image: sweatshirt3, label: 'Спина - центр' },
-    { id: 4, image: sweatshirt4, label: 'Рукав левый' },
-    { id: 5, image: sweatshirt5, label: 'Рукав правый' },
-    { id: 6, image: sweatshirt6, label: 'Низ спереди' },
-    { id: 7, image: sweatshirt7, label: 'Верх спины' },
-    { id: 8, image: sweatshirt8, label: 'Поясница' },
+    { id: 1, image: sweatshirt1, label: 'Центр груди большой' },
+    { id: 2, image: sweatshirt2, label: 'Центр груди средний' },
+    { id: 3, image: sweatshirt3, label: 'Справа на груди' },
+    { id: 4, image: sweatshirt4, label: 'Слева на груди' },
+    { id: 5, image: sweatshirt5, label: 'Центр спины средний' },
+    { id: 6, image: sweatshirt6, label: 'Справа на спине' },
+    { id: 7, image: sweatshirt7, label: 'Слева на спине' },
+    { id: 8, image: sweatshirt8, label: 'Центр спины большой' },
   ],
 };

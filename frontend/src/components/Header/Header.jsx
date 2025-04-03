@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from './logo.png';
-import { FaShoppingCart, FaSearch, FaUser, FaTimes, FaPlus, FaMinus } from 'react-icons/fa';
+import { FaShoppingCart, FaSearch, FaTimes, FaPlus, FaMinus } from 'react-icons/fa';
 import { CartContext } from '../../context/CartContext';
 import './Header.css';
 
@@ -10,8 +10,6 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const [userAvatar, setUserAvatar] = useState(null);
 
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useContext(CartContext);
   const navigate = useNavigate();
@@ -63,7 +61,6 @@ export default function Header() {
           <Link to="/framed-canvas" className="nav-link" onClick={toggleMenu}>Картины</Link>
           <Link to="/classic-frames" className="nav-link" onClick={toggleMenu}>Мерч</Link>
           <Link to="/events" className="nav-link" onClick={toggleMenu}>События</Link>
-          <Link to="/account" className="nav-link" onClick={toggleMenu}>Личный кабинет</Link>
         </div>
       </div>
 
@@ -76,26 +73,12 @@ export default function Header() {
           <Link to="/framed-canvas" className="nav-link">Картины</Link>
           <Link to="/classic-frames" className="nav-link">Мерч</Link>
           <Link to="/events" className="nav-link">События</Link>
-          <Link to="/account" className="nav-link">Личный кабинет</Link>
         </nav>
         
         {/* Кнопки справа */}
         <div className="buttons">
           <FaShoppingCart onClick={toggleCart} className={`shop-cart-button ${cartOpen ? 'active' : ''}`} />
           <FaSearch onClick={toggleSearch} className="search-button" />
-          {userLoggedIn ? (
-            <Link to="/account">
-              <img 
-                src={userAvatar || '/path/to/default-avatar.png'}
-                alt="User Avatar"
-                className="user-avatar"
-              />
-            </Link>
-          ) : (
-            <Link to="/auth">
-              <FaUser className="user-login-icon" />
-            </Link>
-          )}
         </div>
       </header>
 

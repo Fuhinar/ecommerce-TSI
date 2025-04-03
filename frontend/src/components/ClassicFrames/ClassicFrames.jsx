@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ClassicFrames.css";
 import { useNavigate } from "react-router-dom";
 
 export default function ClassicFrames({ products = [] }) {
-
   const navigate = useNavigate();
+  
+  const itemsPerPage = 6;
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleCardClick = (id) => {
     navigate(`/artpersonalpage/${id}`);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -23,10 +35,12 @@ export default function ClassicFrames({ products = [] }) {
       </div>
 
       <div className="classic-frames-grid">
-        {products.map((item, index) => (
-          <div key={index} 
-          className="classic-canvas-card"
-          onClick={() => handleCardClick(item.id)}>
+        {currentItems.map((item) => (
+          <div
+            key={item.id}
+            className="classic-canvas-card"
+            onClick={() => handleCardClick(item.id)}
+          >
             <div className="image-container">
               <img src={item.image} alt={item.name} className="classic-frames-image" />
             </div>
@@ -39,9 +53,15 @@ export default function ClassicFrames({ products = [] }) {
       </div>
 
       <div className="pagination">
-        <button className="pagination-button">1</button>
-        <button className="pagination-button">2</button>
-        <button className="pagination-button">3</button>
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <button
+            key={page}
+            className={`pagination-button ${page === currentPage ? "active" : ""}`}
+            onClick={() => handlePageChange(page)}
+          >
+            {page}
+          </button>
+        ))}
       </div>
     </div>
   );

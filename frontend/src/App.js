@@ -147,16 +147,37 @@ function App() {
               />
               <Route
                 path="/framed-canvas"
-                element={<FramedCanvas products={framedItems} />}
+                element={
+                <>
+                  <FramedCanvas products={framedItems} /> 
+                  <FooterLogo />
+                  <Footer />
+                </>
+                }
+                
               />
               <Route
                 path="/classic-frames"
-                element={<ClassicFrames products={classicItems} />}
+                element={
+                <>
+                  <ClassicFrames products={classicItems}/> 
+                  <FooterLogo />
+                  <Footer />
+                </>
+                }
               />
+
               <Route
                 path="/events"
-                element={<Events events={eventsData} />}
+                element={
+                <>
+                  <Events events={eventsData}/> 
+                  <FooterLogo />
+                  <Footer />
+                </>
+                }
               />
+
               <Route
                 path="/terms"
                 element={
@@ -175,7 +196,6 @@ function App() {
                   </>
                 }
               />
-              <Route path="/auth" element={<Auth />} />
             </Routes>
           </Suspense>
         </Router>
