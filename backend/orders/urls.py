@@ -11,3 +11,5 @@ urlpatterns = [
     # Стандартные маршруты для OrderViewSet:
     path('', include(router.urls)),
 ]
+
+urlpatterns += router.urls
