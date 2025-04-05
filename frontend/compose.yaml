@@ -16,7 +16,7 @@ services:
       dockerfile: Dockerfile
     container_name: backend-app
     env_file:
-      - ./backend/.env  # либо, если один .env для всего проекта, можно указать: - .env
+      - ./backend/.env
     environment:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
@@ -31,27 +31,17 @@ services:
       - media_volume:/backend/media
     restart: unless-stopped
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   container_name: frontend-app
-  #   ports:
-  #     - "80:80"
-  #   depends_on:
-  #     - backend
-  #   volumes:
-  #     - media_volume:/usr/share/nginx/html/media  # Оставляем только для media, если необходимо
-  #   restart: unless-stopped
-
   frontend:
-    image: node:18-alpine
-    working_dir: /app
-    volumes:
-      - ./frontend:/app
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend-app
     ports:
-      - "3000:3000"
-    command: npm start
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
 
 
 volumes:

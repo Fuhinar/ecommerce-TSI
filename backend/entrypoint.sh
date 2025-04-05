@@ -1,19 +1,18 @@
-#!/bin/sh
 set -e
 
-echo "Running migrations..."
-python manage.py migrate --noinput
-
-echo "Collecting static files..."
-python manage.py collectstatic --noinput
-
-# (Опционально) создание суперпользователя, если заданы переменные окружения
-if [ "$DJANGO_SUPERUSER_USERNAME" ] && [ "$DJANGO_SUPERUSER_PASSWORD" ]; then
-  python manage.py createsuperuser \
-    --noinput \
-    --username "$DJANGO_SUPERUSER_USERNAME" \
-    --email "${DJANGO_SUPERUSER_EMAIL:-admin@example.com}" || true
+if [ "$DATABASE" = "postgres" ]; then
+    echo "Waiting for PostgreSQL..."
+    while ! nc -z "$DB_HOST" "$DB_PORT"; do
+      sleep 1
+    done
+    echo "PostgreSQL is available."
 fi
 
+echo "Applying database migrations..."
+python manage.py migrate --no-input
+
+echo "Collecting static files..."
+python manage.py collectstatic --no-input --clear
+
 echo "Starting Gunicorn..."
-exec gunicorn app.wsgi:application --bind 0.0.0.0:8000 --workers 3
+exec "$@"
