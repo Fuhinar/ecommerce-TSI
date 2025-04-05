@@ -12,4 +12,4 @@ RUN chmod +x entrypoint.sh
 
 ENV DJANGO_SETTINGS_MODULE=app.settings
 
-CMD ["gunicorn", "app.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "1"]
+CMD ["gunicorn", "app.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]

@@ -1,16 +1,20 @@
-FROM node:18-alpine AS build
+FROM node:18-alpine
 
+# Set working directory
 WORKDIR /app
+
+# Copy package.json and package-lock.json first to leverage caching
 COPY package.json package-lock.json ./
+
+# Install dependencies (use npm ci for faster installation in CI/CD environments)
 RUN npm ci
-COPY . . 
+
+# Copy the rest of the code
+COPY . .
+
+# Build the frontend
 RUN npm run build
 
-FROM nginx:1.23-alpine
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
 
-EXPOSE 8080
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
