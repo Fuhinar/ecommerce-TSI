@@ -24,8 +24,10 @@ const Events = React.lazy(() => import('./components/Events/Events'));
 const TermsOfUse = React.lazy(() => import('./components/TermsofUse/TermsofUse'));
 const AboutUs = React.lazy(() => import('./components/AboutUs/AboutUs'));
 const CartPage = React.lazy(() => import('./components/CartPage/CartPage'));
-const Auth = React.lazy(() => import('./components/AuthPage/AuthPage'));
 const AccountPage = React.lazy(() => import('./components/AccountPage/AccountPage'));
+
+// Установим базовый URL для axios
+axios.defaults.baseURL = 'http://64.226.99.33:8000'; // Ваш сервер
 
 function App() {
   const [artists, setArtists] = useState([]);
@@ -148,33 +150,32 @@ function App() {
               <Route
                 path="/framed-canvas"
                 element={
-                <>
-                  <FramedCanvas products={framedItems} /> 
-                  <FooterLogo />
-                  <Footer />
-                </>
+                  <>
+                    <FramedCanvas products={framedItems} />
+                    <FooterLogo />
+                    <Footer />
+                  </>
                 }
-                
               />
               <Route
                 path="/classic-frames"
                 element={
-                <>
-                  <ClassicFrames products={classicItems}/> 
-                  <FooterLogo />
-                  <Footer />
-                </>
+                  <>
+                    <ClassicFrames products={classicItems} />
+                    <FooterLogo />
+                    <Footer />
+                  </>
                 }
               />
 
               <Route
                 path="/events"
                 element={
-                <>
-                  <Events events={eventsData}/> 
-                  <FooterLogo />
-                  <Footer />
-                </>
+                  <>
+                    <Events events={eventsData} />
+                    <FooterLogo />
+                    <Footer />
+                  </>
                 }
               />
 

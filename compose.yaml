@@ -12,7 +12,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - backend_net
+      backend_net:
+        aliases:
+          - db
     restart: unless-stopped
 
   backend:
@@ -21,8 +23,11 @@ services:
       dockerfile: Dockerfile
     container_name: backend-app
     env_file: .env
+    # Убедитесь, что в .env прописано: DB_HOST=db
     networks:
-      - backend_net
+      backend_net:
+        aliases:
+          - backend
     volumes:
       - media_volume:/backend/media
       - static_volume:/backend/staticfiles
@@ -39,22 +44,15 @@ services:
     container_name: frontend-app
     env_file: .env
     networks:
-      - backend_net
+      backend_net:
+        aliases:
+          - frontend
+    ports:
+      - "8080:80"
+    # Не монтируем volume для статики, чтобы не затирать собранное приложение
     volumes:
       - media_volume:/usr/share/nginx/html/media
     depends_on:
-      - backend
-    restart: unless-stopped
-
-  nginx:
-    image: nginx:1.23-alpine
-    container_name: nginx
-    ports:
-      - "8080:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf 
-    depends_on:
-      - frontend
       - backend
     restart: unless-stopped
 
